@@ -1,0 +1,104 @@
+<?php
+include("class.trailer.dao.php");
+include_once("header.php");
+$dao = new DAOtrailer();
+?>
+<a href="form.trailer.php">Add trailer</a>
+<table border="1" width="100%" cellspacing = "5" cellpadding = "5">
+	<tr>
+		<td>trailer_id</td>
+		<td>uid</td>
+		<td>make</td>
+		<td>yr_model</td>
+		<td>yr_first_sold</td>
+		<td>vlf_class</td>
+		<td>type_veh</td>
+		<td>type_lic</td>
+		<td>license_num</td>
+		<td>body_type_model</td>
+		<td>mp</td>
+		<td>mo</td>
+		<td>ax</td>
+		<td>wc</td>
+		<td>unladen_g_cgw</td>
+		<td>vehicle_id_num</td>
+		<td>type_vehicle_use</td>
+		<td>date_issued</td>
+		<td>cc_alco</td>
+		<td>dt_fee_recvd</td>
+		<td>pic</td>
+		<td>registered_owner</td>
+		<td>amount_due</td>
+		<td>amount_recvd</td>
+		<td>amount_paid</td>
+		<td><b>Edit</b></td>
+		<td><b>Delete</b></td>
+	</tr>
+
+<?php
+$rec_per_page = 10;
+if(isset($_GET['page']))
+	$page = $_GET['page'];
+else
+	$page = 1;
+$limit1 = ($page-1)*$rec_per_page;
+$limit2 = ($page)*$rec_per_page;
+$total_recs = $dao->getCount();
+$rec = $dao->getAll($limit1, $limit2);
+$pages = ceil($total_recs/$rec_per_page);
+if($page==1)	$prev = $page;
+else	$prev=$page-1;
+
+if($page==$pages)	$next = $page;
+else	$next=$page+1;
+
+foreach($rec as $row) {
+?>
+	<tr>
+		<td><? echo $row->trailer_id ?>	</td>
+		<td><? echo $row->uid ?>	</td>
+		<td><? echo $row->make ?>	</td>
+		<td><? echo $row->yr_model ?>	</td>
+		<td><? echo $row->yr_first_sold ?>	</td>
+		<td><? echo $row->vlf_class ?>	</td>
+		<td><? echo $row->type_veh ?>	</td>
+		<td><? echo $row->type_lic ?>	</td>
+		<td><? echo $row->license_num ?>	</td>
+		<td><? echo $row->body_type_model ?>	</td>
+		<td><? echo $row->mp ?>	</td>
+		<td><? echo $row->mo ?>	</td>
+		<td><? echo $row->ax ?>	</td>
+		<td><? echo $row->wc ?>	</td>
+		<td><? echo $row->unladen_g_cgw ?>	</td>
+		<td><? echo $row->vehicle_id_num ?>	</td>
+		<td><? echo $row->type_vehicle_use ?>	</td>
+		<td><? echo $row->date_issued ?>	</td>
+		<td><? echo $row->cc_alco ?>	</td>
+		<td><? echo $row->dt_fee_recvd ?>	</td>
+		<td><? echo $row->pic ?>	</td>
+		<td><? echo $row->registered_owner ?>	</td>
+		<td><? echo $row->amount_due ?>	</td>
+		<td><? echo $row->amount_recvd ?>	</td>
+		<td><? echo $row->amount_paid ?>	</td>
+		<th><a href='form.trailer.php?id=<? echo $row->trailer_id ?>'><img src="img/edit.png" /></a></th>
+		<th><a href='delete.trailer.php?id=<? echo $row->trailer_id ?>'><img src="img/del.png" /></a></th>
+	</tr>
+<?}
+?>
+</table>
+<?
+if($page != 1){
+?>&nbsp;&nbsp;<a href="trailer.php?page=<?=$prev?>" style="margin-right:20px">Prev</a>
+<?}
+for ($p =1; $p<=$pages ; $p++){
+ ?>&nbsp;&nbsp;<a href="trailer.php?page=<?=$p?>"><?=$p."/".$pages?></a>
+<?
+}
+if($page != $pages){
+?><a href="trailer.php?page=<?=$next?>" style="margin-left:20px">Next</a>
+<a href="trailer.php?page=<?=$pages?>"style="margin-left:12px">Last</a><br />
+<?}
+?>
+<?php
+include("footer.php");
+?>
