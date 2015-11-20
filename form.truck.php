@@ -130,6 +130,7 @@
 include("header.php");
 include("class.truck.dao.php");
 ?>
+<center>
 <form name = "frmTruck" method="POST" action="save.truck.php"  onsubmit = "return validateTruck();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -335,11 +336,12 @@ include("class.truck.dao.php");
 				<td><input type = "text" name = "amount_paid" /></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "ADD"  /></th>
+				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
 </form>
+<center>
 <?
 include("footer.php");
 ?>

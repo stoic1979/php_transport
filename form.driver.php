@@ -45,6 +45,7 @@
 include("header.php");
 include("class.driver.dao.php");
 ?>
+<center>
 <form name = "frmDriver" method="POST" action="save.driver.php"  onsubmit = "return validateDriver();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -114,11 +115,12 @@ include("class.driver.dao.php");
 				<td><input type = "text" name = "social_security_no" /></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "ADD"  /></th>
+				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
 </form>
+<center>
 <?
 include("footer.php");
 ?>

@@ -40,6 +40,7 @@
 include("header.php");
 include("class.customer.dao.php");
 ?>
+<center>
 <form name = "frmCustomer" method="POST" action="save.customer.php"  onsubmit = "return validateCustomer();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -101,11 +102,12 @@ include("class.customer.dao.php");
 				<td><input type = "text" name = "email" /></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "ADD"  /></th>
+				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
 </form>
+</center>
 <?
 include("footer.php");
 ?>

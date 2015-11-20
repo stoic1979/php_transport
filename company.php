@@ -3,17 +3,20 @@ include("class.company.dao.php");
 include_once("header.php");
 $dao = new DAOcompany();
 ?>
-<a href="form.company.php">Add company</a>
-<table border="1" width="100%" cellspacing = "5" cellpadding = "5">
-	<tr>
-		<td>comp_id</td>
-		<td>uid</td>
-		<td>title</td>
-		<td>phone</td>
-		<td>address</td>
+
+<a href="form.company.php" class="btn btn-success" role="button">Add Company</a> <br><br>
+<table class="table">
+    <thead>
+	<tr class="success">
+		<td>Comp_id</td>
+		<td>Uid</td>
+		<td>Title</td>
+		<td>Phone</td>
+		<td>Address</td>
 		<td><b>Edit</b></td>
 		<td><b>Delete</b></td>
 	</tr>
+    </thead>
 
 <?php
 $rec_per_page = 10;
@@ -34,7 +37,8 @@ else	$next=$page+1;
 
 foreach($rec as $row) {
 ?>
-	<tr>
+	<tbody>
+	<tr class="danger">
 		<td><? echo $row->comp_id ?>	</td>
 		<td><? echo $row->uid ?>	</td>
 		<td><? echo $row->title ?>	</td>
@@ -43,6 +47,7 @@ foreach($rec as $row) {
 		<th><a href='form.company.php?id=<? echo $row->comp_id ?>'><img src="img/edit.png" /></a></th>
 		<th><a href='delete.company.php?id=<? echo $row->comp_id ?>'><img src="img/del.png" /></a></th>
 	</tr>
+	</tbody>
 <?}
 ?>
 </table>

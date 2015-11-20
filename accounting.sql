@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.0
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2015 at 07:34 PM
--- Server version: 5.5.31-0ubuntu0.12.04.1
--- PHP Version: 5.3.10-1ubuntu3.15
+-- Generation Time: Nov 20, 2015 at 11:08 AM
+-- Server version: 5.5.44-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -53,7 +53,16 @@ CREATE TABLE IF NOT EXISTS `company` (
   `phone` text NOT NULL,
   `address` text NOT NULL,
   PRIMARY KEY (`comp_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`comp_id`, `uid`, `title`, `phone`, `address`) VALUES
+(1, 20, 'weavebytes', '848484848', 'Mohali'),
+(2, 50, 'bigbytes', '858965262', 'Patiala'),
+(3, 450, 'interglobe', '+41526953635', '421-A CA Georgia');
 
 -- --------------------------------------------------------
 
@@ -200,21 +209,25 @@ CREATE TABLE IF NOT EXISTS `upload` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `uid` bigint(20) NOT NULL AUTO_INCREMENT,
-  `username` text NOT NULL,
-  `password` text NOT NULL,
-  `full_name` text NOT NULL,
-  `email` text NOT NULL,
-  `phone` text NOT NULL,
-  `address` text NOT NULL,
-  `creation_date` date NOT NULL,
-  `is_active` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(5) NOT NULL AUTO_INCREMENT,
+  `username` varchar(25) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`) VALUES
+(1, 'sma', 'suraj@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(2, 'seema', 'seema@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

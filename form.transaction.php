@@ -60,6 +60,7 @@
 include("header.php");
 include("class.transaction.dao.php");
 ?>
+<center>
 <form name = "frmTransaction" method="POST" action="save.transaction.php"  onsubmit = "return validateTransaction();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -153,11 +154,12 @@ include("class.transaction.dao.php");
 				<td><input type = "text" name = "is_paid" /></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "ADD"  /></th>
+				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
 </form>
+<center>
 <?
 include("footer.php");
 ?>

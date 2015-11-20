@@ -130,6 +130,7 @@
 include("header.php");
 include("class.trailer.dao.php");
 ?>
+<center>
 <form name = "frmTrailer" method="POST" action="save.trailer.php"  onsubmit = "return validateTrailer();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -335,11 +336,12 @@ include("class.trailer.dao.php");
 				<td><input type = "text" name = "amount_paid" /></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "ADD"  /></th>
+				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
 </form>
+</center>
 <?
 include("footer.php");
 ?>

@@ -3,8 +3,8 @@ include("class.driver.dao.php");
 include_once("header.php");
 $dao = new DAOdriver();
 ?>
-<a href="form.driver.php">Add driver</a>
-<table border="1" width="100%" cellspacing = "5" cellpadding = "5">
+<a href="form.driver.php" class="btn btn-info">Add driver</a><br><br>
+<table class="table table-striped">
 	<tr>
 		<td>did</td>
 		<td>uid</td>
@@ -37,6 +37,7 @@ else	$next=$page+1;
 
 foreach($rec as $row) {
 ?>
+	<tbody>
 	<tr>
 		<td><? echo $row->did ?>	</td>
 		<td><? echo $row->uid ?>	</td>
@@ -49,6 +50,7 @@ foreach($rec as $row) {
 		<th><a href='form.driver.php?id=<? echo $row->did ?>'><img src="img/edit.png" /></a></th>
 		<th><a href='delete.driver.php?id=<? echo $row->did ?>'><img src="img/del.png" /></a></th>
 	</tr>
+	</tbody>
 <?}
 ?>
 </table>

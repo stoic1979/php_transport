@@ -35,6 +35,7 @@
 include("header.php");
 include("class.upload.dao.php");
 ?>
+<center>
 <form name = "frmUpload" method="POST" action="save.upload.php"  onsubmit = "return validateUpload();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -88,11 +89,12 @@ include("class.upload.dao.php");
 				<td><input type = "text" name = "img" /></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "ADD"  /></th>
+				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
 </form>
+<center>
 <?
 include("footer.php");
 ?>

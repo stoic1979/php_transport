@@ -3,8 +3,8 @@ include("class.customer.dao.php");
 include_once("header.php");
 $dao = new DAOcustomer();
 ?>
-<a href="form.customer.php">Add customer</a>
-<table border="1" width="100%" cellspacing = "5" cellpadding = "5">
+<a href="form.customer.php" class="btn btn-info">Add customer</a><br><br>
+<table class="table table-striped">
 	<tr>
 		<td>cust_id</td>
 		<td>uid</td>
@@ -36,6 +36,7 @@ else	$next=$page+1;
 
 foreach($rec as $row) {
 ?>
+	<tbody>
 	<tr>
 		<td><? echo $row->cust_id ?>	</td>
 		<td><? echo $row->uid ?>	</td>
@@ -47,6 +48,7 @@ foreach($rec as $row) {
 		<th><a href='form.customer.php?id=<? echo $row->cust_id ?>'><img src="img/edit.png" /></a></th>
 		<th><a href='delete.customer.php?id=<? echo $row->cust_id ?>'><img src="img/del.png" /></a></th>
 	</tr>
+	<tbody>
 <?}
 ?>
 </table>

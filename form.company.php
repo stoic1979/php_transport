@@ -30,6 +30,7 @@
 include("header.php");
 include("class.company.dao.php");
 ?>
+<center>
 <form name = "frmCompany" method="POST" action="save.company.php"  onsubmit = "return validateCompany();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -38,19 +39,19 @@ include("class.company.dao.php");
 			$vo = $dao->get($_GET["id"]);
 		?>
 			<tr>
-				<td> uid </td>
+				<td> Uid </td>
 				<td><input type = "text" name = "uid" value= "<?=$vo->uid?> "/></td>
 			</tr>
 			<tr>
-				<td> title </td>
+				<td> Title </td>
 				<td><input type = "text" name = "title" value= "<?=$vo->title?> "/></td>
 			</tr>
 			<tr>
-				<td> phone </td>
+				<td> Phone </td>
 				<td><input type = "text" name = "phone" value= "<?=$vo->phone?> "/></td>
 			</tr>
 			<tr>
-				<td> address </td>
+				<td> Address </td>
 				<td><input type = "text" name = "address" value= "<?=$vo->address?> "/></td>
 			</tr>
 			<tr colspan = "2">
@@ -59,27 +60,28 @@ include("class.company.dao.php");
 			<input type = "hidden" name = "comp_id" value= "<?=$vo->comp_id?> "/>
 		<?}else{?>
 			<tr>
-				<td> uid </td>
+				<td> Uid </td>
 				<td><input type = "text" name = "uid" /></td>
 			</tr>
 			<tr>
-				<td> title </td>
+				<td> Title </td>
 				<td><input type = "text" name = "title" /></td>
 			</tr>
 			<tr>
-				<td> phone </td>
+				<td> Phone </td>
 				<td><input type = "text" name = "phone" /></td>
 			</tr>
 			<tr>
-				<td> address </td>
+				<td> Address </td>
 				<td><input type = "text" name = "address" /></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "ADD"  /></th>
+				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
 </form>
+<center>
 <?
 include("footer.php");
 ?>

@@ -3,8 +3,8 @@ include("class.truck.dao.php");
 include_once("header.php");
 $dao = new DAOtruck();
 ?>
-<a href="form.truck.php">Add truck</a>
-<table border="1" width="100%" cellspacing = "5" cellpadding = "5">
+<a href="form.truck.php" class="btn btn-info">Add truck</a><br><br>
+<table class="table table-striped">
 	<tr>
 		<td>truck_id</td>
 		<td>uid</td>
@@ -55,6 +55,7 @@ else	$next=$page+1;
 foreach($rec as $row) {
 ?>
 	<tr>
+	<tbody>
 		<td><? echo $row->truck_id ?>	</td>
 		<td><? echo $row->uid ?>	</td>
 		<td><? echo $row->make ?>	</td>
@@ -83,6 +84,7 @@ foreach($rec as $row) {
 		<th><a href='form.truck.php?id=<? echo $row->truck_id ?>'><img src="img/edit.png" /></a></th>
 		<th><a href='delete.truck.php?id=<? echo $row->truck_id ?>'><img src="img/del.png" /></a></th>
 	</tr>
+	</tbody>
 <?}
 ?>
 </table>
