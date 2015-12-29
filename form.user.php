@@ -58,35 +58,35 @@ include("class.user.dao.php");
 			$vo = $dao->get($_GET["id"]);
 		?>
 			<tr>
-				<td> username </td>
+				<td> Username </td>
 				<td><input type = "text" name = "username" value= "<?=$vo->username?> "/></td>
 			</tr>
 			<tr>
-				<td> password </td>
+				<td> Password </td>
 				<td><input type = "text" name = "password" value= "<?=$vo->password?> "/></td>
 			</tr>
 			<tr>
-				<td> full_name </td>
+				<td> Full Name </td>
 				<td><input type = "text" name = "full_name" value= "<?=$vo->full_name?> "/></td>
 			</tr>
 			<tr>
-				<td> email </td>
+				<td> Email </td>
 				<td><input type = "text" name = "email" value= "<?=$vo->email?> "/></td>
 			</tr>
 			<tr>
-				<td> phone </td>
+				<td> Phone </td>
 				<td><input type = "text" name = "phone" value= "<?=$vo->phone?> "/></td>
 			</tr>
 			<tr>
-				<td> address </td>
+				<td> Address </td>
 				<td><input type = "text" name = "address" value= "<?=$vo->address?> "/></td>
 			</tr>
 			<tr>
-				<td> creation_date </td>
+				<td> Creation Date </td>
 				<td><input type = "text" name = "creation_date" value= "<?=$vo->creation_date?> "/></td>
 			</tr>
 			<tr>
-				<td> is_active </td>
+				<td> Is Active </td>
 				<td><input type = "text" name = "is_active" value= "<?=$vo->is_active?> "/></td>
 			</tr>
 			<tr colspan = "2">
@@ -95,35 +95,35 @@ include("class.user.dao.php");
 			<input type = "hidden" name = "uid" value= "<?=$vo->uid?> "/>
 		<?}else{?>
 			<tr>
-				<td> username </td>
+				<td> Username </td>
 				<td><input type = "text" name = "username" /></td>
 			</tr>
 			<tr>
-				<td> password </td>
+				<td> Password </td>
 				<td><input type = "text" name = "password" /></td>
 			</tr>
 			<tr>
-				<td> full_name </td>
+				<td> Full Name </td>
 				<td><input type = "text" name = "full_name" /></td>
 			</tr>
 			<tr>
-				<td> email </td>
+				<td> Email </td>
 				<td><input type = "text" name = "email" /></td>
 			</tr>
 			<tr>
-				<td> phone </td>
+				<td> Phone </td>
 				<td><input type = "text" name = "phone" /></td>
 			</tr>
 			<tr>
-				<td> address </td>
+				<td> Address </td>
 				<td><input type = "text" name = "address" /></td>
 			</tr>
 			<tr>
-				<td> creation_date </td>
+				<td> Creation Date </td>
 				<td><input type = "text" name = "creation_date" /></td>
 			</tr>
 			<tr>
-				<td> is_active </td>
+				<td> Is Active </td>
 				<td><input type = "text" name = "is_active" /></td>
 			</tr>
 			<tr colspan = "2">

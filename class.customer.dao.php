@@ -38,6 +38,22 @@ class DAOcustomer {
 		return NULL;
 	}
 
+	/* returns all vo as per user */
+	public function getAllByUser($uid, $limit1,$limit2){
+		$result=mysql_query("SELECT * FROM customer where uid=$uid LIMIT " . $limit1 . "," . $limit2 );
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new customer($row['uid'],$row['name'],$row['firm_name'],$row['address'],$row['phone'],$row['email']);
+				$vo->cust_id = $row['cust_id'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
+
 	/* returns number of vo */
 	public function getCount(){
 		$result = mysql_num_rows(mysql_query("select * from customer"));

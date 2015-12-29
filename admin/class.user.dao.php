@@ -10,11 +10,26 @@ class DAOuser {
 		/* ensure uid is an integer */
 		if(!is_numeric($uid)) throw  new Exception("uid of user must be an integer");
 
-		$result=mysql_query("SELECT * FROM user WHERE uid=$uid");
+		$result=mysql_query("SELECT * FROM user WHERE user_id=$uid");
 		if($result){/*ensure query success*/
 			if($row = mysql_fetch_array($result)){/*ensure record*/
 				$vo = new user($row['username'],$row['password'],$row['full_name'],$row['email'],$row['phone'],$row['address'],$row['creation_date'],$row['is_active']);
 				$vo->uid = $uid;
+				return $vo;
+			}
+		}
+
+		return NULL;
+	}
+
+	/* gets a vo by uid */
+	public function getByEmailAndPassword($email, $password){
+		$hash = md5($password);
+		$result=mysql_query("SELECT * FROM user WHERE email='$email' and password='$hash'");
+		if($result){/*ensure query success*/
+			if($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new user($row['username'],$row['password'],$row['full_name'],$row['email'],$row['phone'],$row['address'],$row['creation_date'],$row['is_active']);
+				$vo->uid = $row['user_id'];
 				return $vo;
 			}
 		}
@@ -46,10 +61,12 @@ class DAOuser {
 
 	/* insert new record in db */
 	public function insert(&$vo){
-		 if(mysql_query("INSERT INTO user(uid,username,password,full_name,email,phone,address,creation_date,is_active) VALUES(' ', '$vo->username','$vo->password','$vo->full_name','$vo->email','$vo->phone','$vo->address','$vo->creation_date','$vo->is_active')")){
+		
+		 if(mysql_query("INSERT INTO user(user_id,username,password,email) VALUES('', '$vo->username','$vo->password','$vo->email')")){
 			$result = mysql_query("Select MAX(uid) from user");
 			if($row = mysql_fetch_array($result)){
 				$vo->uid=$row[0];
+				echo "insert user 11111<br>";
 				return true;
 			}
 		}
@@ -58,7 +75,7 @@ class DAOuser {
 
 	/* update an existing record in db */
 	public function update(&$vo){
-		return mysql_query("UPDATE user SET username = '$vo->username',password = '$vo->password',full_name = '$vo->full_name',email = '$vo->email',phone = '$vo->phone',address = '$vo->address',creation_date = '$vo->creation_date',is_active = '$vo->is_active' WHERE uid = $vo->uid ");
+		return mysql_query("UPDATE user SET username = '$vo->username',password = '$vo->password',email = '$vo->email' WHERE uid = $vo->uid ");
 	}
 
 	/* save the value object in db */
@@ -85,6 +102,54 @@ class DAOuser {
 		return NULL;
 	}
 
- }
+	/* get valid user */
+	public function getValidUser(&$vo){
+        $dao = new DAOuser();
+        $limit1 = 1;
+		$limit2 = $dao->getCount();
+		$vlist  = $dao->getAll($limit1,$limit2);
+		//ensure that username doesn't exist
+		foreach ($vlist as $rec) {
+		if(($rec->username == $vo->username) or ($rec->email == $vo->email)){
+		$vuser = true;
+		}
+		else { // login OK
+		$vuser = false;
+ 		}
+		}
+		return $vuser;
+	}
+ 	
+ 	/* gets a vo by uid */
+	public function getByEmail($email){
+		$result=mysql_query("SELECT * FROM user WHERE email='$email'");
+		if($result){/*ensure query success*/
+			if($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new user($row['username'],$row['password'],$row['full_name'],$row['email'],$row['phone'],$row['address'],$row['creation_date'],$row['is_active']);
+				$vo->uid = $row['user_id'];
+				return $vo;
+			}
+		}
+
+		return NULL;
+	}
+
+/* gets a vo by uid */
+	public function getByPassword( $password){
+		$hash = md5($password);
+		$result=mysql_query("SELECT * FROM user WHERE password='$hash'");
+		if($result){/*ensure query success*/
+			if($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new user($row['username'],$row['password'],$row['full_name'],$row['email'],$row['phone'],$row['address'],$row['creation_date'],$row['is_active']);
+				$vo->uid = $row['user_id'];
+				return $vo;
+			}
+		}
+
+		return NULL;
+	}
+
+	}
+
 /* DAOuser */
 ?>

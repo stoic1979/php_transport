@@ -38,6 +38,21 @@ class DAOtrailer {
 		return NULL;
 	}
 
+/* returns all vo by user */
+	public function getAllByUser($uid,$limit1,$limit2){
+		$result=mysql_query("SELECT * FROM trailer LIMIT where uid=$uid  " . $limit1 . "," . $limit2 );
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new trailer($row['uid'],$row['make'],$row['yr_model'],$row['yr_first_sold'],$row['vlf_class'],$row['type_veh'],$row['type_lic'],$row['license_num'],$row['body_type_model'],$row['mp'],$row['mo'],$row['ax'],$row['wc'],$row['unladen_g_cgw'],$row['vehicle_id_num'],$row['type_vehicle_use'],$row['date_issued'],$row['cc_alco'],$row['dt_fee_recvd'],$row['pic'],$row['registered_owner'],$row['amount_due'],$row['amount_recvd'],$row['amount_paid']);
+				$vo->trailer_id = $row['trailer_id'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
 	/* returns number of vo */
 	public function getCount(){
 		$result = mysql_num_rows(mysql_query("select * from trailer"));

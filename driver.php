@@ -1,19 +1,19 @@
 <?php
+session_start();
 include("class.driver.dao.php");
 include_once("header.php");
 $dao = new DAOdriver();
 ?>
 <a href="form.driver.php" class="btn btn-info">Add driver</a><br><br>
 <table class="table table-striped">
-	<tr>
-		<td>did</td>
-		<td>uid</td>
-		<td>name</td>
-		<td>photo</td>
-		<td>address</td>
-		<td>email</td>
-		<td>phone</td>
-		<td>social_security_no</td>
+	<tr class ="info">
+		<td>#</td>
+		<td>Name</td>
+		<td>Photo</td>
+		<td>Address</td>
+		<td>Email</td>
+		<td>Phone</td>
+		<td>Social Security No</td>
 		<td><b>Edit</b></td>
 		<td><b>Delete</b></td>
 	</tr>
@@ -27,20 +27,20 @@ else
 $limit1 = ($page-1)*$rec_per_page;
 $limit2 = ($page)*$rec_per_page;
 $total_recs = $dao->getCount();
-$rec = $dao->getAll($limit1, $limit2);
+$rec = $dao->getAllByUser($_SESSION["uid"],$limit1, $limit2);
 $pages = ceil($total_recs/$rec_per_page);
 if($page==1)	$prev = $page;
 else	$prev=$page-1;
 
 if($page==$pages)	$next = $page;
 else	$next=$page+1;
-
-foreach($rec as $row) {
+$i = 0;
+if($rec) foreach($rec as $row) {
+	$i++;
 ?>
 	<tbody>
 	<tr>
-		<td><? echo $row->did ?>	</td>
-		<td><? echo $row->uid ?>	</td>
+		<td><? echo $i ?>	</td>
 		<td><? echo $row->name ?>	</td>
 		<td><? echo $row->photo ?>	</td>
 		<td><? echo $row->address ?>	</td>
@@ -52,6 +52,7 @@ foreach($rec as $row) {
 	</tr>
 	</tbody>
 <?}
+else echo "<tr><td colspan='8'><center><br><br><br><b>No Drivers are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

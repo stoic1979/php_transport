@@ -38,6 +38,22 @@ class DAOupload {
 		return NULL;
 	}
 
+    /* returns all vo by user*/
+	public function getAllByUser($uid,$limit1,$limit2){
+		$result=mysql_query("SELECT * FROM upload LIMIT where uid=$uid" . $limit1 . "," . $limit2 );
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new upload($row['uid'],$row['title'],$row['type'],$row['date'],$row['img']);
+				$vo->upload_id = $row['upload_id'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
+
 	/* returns number of vo */
 	public function getCount(){
 		$result = mysql_num_rows(mysql_query("select * from upload"));

@@ -61,6 +61,7 @@ include("header.php");
 include("class.transaction.dao.php");
 ?>
 <center>
+	<h3>Add Transaction</h3>
 <form name = "frmTransaction" method="POST" action="save.transaction.php"  onsubmit = "return validateTransaction();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -69,43 +70,39 @@ include("class.transaction.dao.php");
 			$vo = $dao->get($_GET["id"]);
 		?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" value= "<?=$vo->uid?> "/></td>
-			</tr>
-			<tr>
-				<td> title </td>
+				<td> Transaction Title </td>
 				<td><input type = "text" name = "title" value= "<?=$vo->title?> "/></td>
 			</tr>
 			<tr>
-				<td> date </td>
+				<td> Date </td>
 				<td><input type = "text" name = "date" value= "<?=$vo->date?> "/></td>
 			</tr>
 			<tr>
-				<td> type </td>
+				<td> Type </td>
 				<td><input type = "text" name = "type" value= "<?=$vo->type?> "/></td>
 			</tr>
 			<tr>
-				<td> info </td>
+				<td> Info </td>
 				<td><input type = "text" name = "info" value= "<?=$vo->info?> "/></td>
 			</tr>
 			<tr>
-				<td> amount </td>
+				<td> Amount </td>
 				<td><input type = "text" name = "amount" value= "<?=$vo->amount?> "/></td>
 			</tr>
 			<tr>
-				<td> sender </td>
+				<td> Sender </td>
 				<td><input type = "text" name = "sender" value= "<?=$vo->sender?> "/></td>
 			</tr>
 			<tr>
-				<td> receiver </td>
+				<td> Receiver </td>
 				<td><input type = "text" name = "receiver" value= "<?=$vo->receiver?> "/></td>
 			</tr>
 			<tr>
-				<td> description </td>
+				<td> Description </td>
 				<td><input type = "text" name = "description" value= "<?=$vo->description?> "/></td>
 			</tr>
 			<tr>
-				<td> is_paid </td>
+				<td> Is Paid </td>
 				<td><input type = "text" name = "is_paid" value= "<?=$vo->is_paid?> "/></td>
 			</tr>
 			<tr colspan = "2">
@@ -114,43 +111,39 @@ include("class.transaction.dao.php");
 			<input type = "hidden" name = "tid" value= "<?=$vo->tid?> "/>
 		<?}else{?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" /></td>
-			</tr>
-			<tr>
-				<td> title </td>
+				<td> Transaction Title </td>
 				<td><input type = "text" name = "title" /></td>
 			</tr>
 			<tr>
-				<td> date </td>
+				<td> Date </td>
 				<td><input type = "text" name = "date" /></td>
 			</tr>
 			<tr>
-				<td> type </td>
+				<td> Type </td>
 				<td><input type = "text" name = "type" /></td>
 			</tr>
 			<tr>
-				<td> info </td>
+				<td> Info </td>
 				<td><input type = "text" name = "info" /></td>
 			</tr>
 			<tr>
-				<td> amount </td>
+				<td> Amount </td>
 				<td><input type = "text" name = "amount" /></td>
 			</tr>
 			<tr>
-				<td> sender </td>
+				<td> Sender </td>
 				<td><input type = "text" name = "sender" /></td>
 			</tr>
 			<tr>
-				<td> receiver </td>
+				<td> Receiver </td>
 				<td><input type = "text" name = "receiver" /></td>
 			</tr>
 			<tr>
-				<td> description </td>
+				<td> Description </td>
 				<td><input type = "text" name = "description" /></td>
 			</tr>
 			<tr>
-				<td> is_paid </td>
+				<td> Is Paid </td>
 				<td><input type = "text" name = "is_paid" /></td>
 			</tr>
 			<tr colspan = "2">

@@ -1,62 +1,46 @@
 <?php
 session_start();
-if(isset($_SESSION['user'])!="")
-{
- header("Location: welcome.php");
-}
+
 include_once 'db.php';
+include("admin/class.user.dao.php");
 
-if(isset($_POST['btn-signup']))
-{
- $uname = mysql_real_escape_string($_POST['uname']);
- $email = mysql_real_escape_string($_POST['email']);
- $upass = md5(mysql_real_escape_string($_POST['pass']));
+$uname = mysql_real_escape_string($_POST['username']);
+$email = mysql_real_escape_string($_POST['email']);
+$upass = md5(mysql_real_escape_string($_POST['password']));
+$password = mysql_real_escape_string($_POST['password']);
  
- if(mysql_query("INSERT INTO users(username,email,password) VALUES('$uname','$email','$upass')"))
- {
-  ?>
-        <script>alert('successfully registered ');</script>
-        <?php
- }
- else
- {
-  ?>
-        <script>alert('error while registering you...');</script>
-        <?php
- }
-}
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Registration</title>
-<link rel="stylesheet" href="style.css" type="text/css" />
+// todo
+// if user already exists
+// return back to login page, with pt=reg, ec=2
 
-</head>
-<body>
-<center>
-<div id="login-form">
-<form method="post">
-<table align="center" width="30%" border="0">
-<tr>
-<td><input type="text" name="uname" placeholder="User Name" required /></td>
-</tr>
-<tr>
-<td><input type="email" name="email" placeholder="Your Email" required /></td>
-</tr>
-<tr>
-<td><input type="password" name="pass" placeholder="Your Password" required /></td>
-</tr>
-<tr>
-<td><button type="submit" name="btn-signup">Sign Me Up</button></td>
-</tr>
-<tr>
-<td><a href="index.php">Sign In Here</a></td>
-</tr>
-</table>
-</form>
-</div>
-</center>
-</body>
-</html>
+
+$vo  = new user($uname, md5($password), $email);
+//$vo->show();
+$dao = new DAOuser();
+$dao->save($vo);
+header("Location: customer.php");
+
+// check later
+$useremail = $dao->getByEmail($email);
+$userpass  = $dao->getByPassword($password);
+//if a valid user then open customer page else display error
+if(($useremail == NULL) or ($userpass == NULL) ){
+	$dao->save($vo);
+	$new = $dao->getByEmailAndPassword($email, $password);
+	if ($new == NULL) {
+		//echo "NULL";
+	}
+	else{
+		$_SESSION["uid"] = $new->uid;
+ 	header("Location: customer.php");
+	}
+	
+}
+else { 
+	header("Location: index.php?pt=reg&ec=2");
+ }
+
+
+ 
+?>
+

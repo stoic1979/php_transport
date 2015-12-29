@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <script type = "text/javascript" >
 	function validateCompany(){ 
 
@@ -31,6 +34,7 @@ include("header.php");
 include("class.company.dao.php");
 ?>
 <center>
+	<h3>Add Company</h3>
 <form name = "frmCompany" method="POST" action="save.company.php"  onsubmit = "return validateCompany();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -38,10 +42,6 @@ include("class.company.dao.php");
 			$dao = new DAOcompany();
 			$vo = $dao->get($_GET["id"]);
 		?>
-			<tr>
-				<td> Uid </td>
-				<td><input type = "text" name = "uid" value= "<?=$vo->uid?> "/></td>
-			</tr>
 			<tr>
 				<td> Title </td>
 				<td><input type = "text" name = "title" value= "<?=$vo->title?> "/></td>
@@ -59,10 +59,6 @@ include("class.company.dao.php");
 			</tr>
 			<input type = "hidden" name = "comp_id" value= "<?=$vo->comp_id?> "/>
 		<?}else{?>
-			<tr>
-				<td> Uid </td>
-				<td><input type = "text" name = "uid" /></td>
-			</tr>
 			<tr>
 				<td> Title </td>
 				<td><input type = "text" name = "title" /></td>

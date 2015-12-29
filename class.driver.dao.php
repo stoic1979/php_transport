@@ -38,6 +38,21 @@ class DAOdriver {
 		return NULL;
 	}
 
+/* returns all vo  by user*/
+	public function getAllByUser($uid,$limit1,$limit2){
+		$result=mysql_query("SELECT * FROM driver where uid=$uid LIMIT " . $limit1 . "," . $limit2 );
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no']);
+				$vo->did = $row['did'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
 	/* returns number of vo */
 	public function getCount(){
 		$result = mysql_num_rows(mysql_query("select * from driver"));

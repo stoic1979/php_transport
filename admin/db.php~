@@ -14,7 +14,7 @@
 
 	define('HOST','localhost');
 	define('USER','root');
-	define('PASSWORD', '123');
+	define('PASSWORD', 'p');
 	define('DBNAME','accounting');
 
 	//conencting to database

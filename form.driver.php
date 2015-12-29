@@ -46,6 +46,7 @@ include("header.php");
 include("class.driver.dao.php");
 ?>
 <center>
+	<h3>Add Driver</h3>
 <form name = "frmDriver" method="POST" action="save.driver.php"  onsubmit = "return validateDriver();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -54,31 +55,27 @@ include("class.driver.dao.php");
 			$vo = $dao->get($_GET["id"]);
 		?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" value= "<?=$vo->uid?> "/></td>
-			</tr>
-			<tr>
-				<td> name </td>
+				<td> Driver Name </td>
 				<td><input type = "text" name = "name" value= "<?=$vo->name?> "/></td>
 			</tr>
 			<tr>
-				<td> photo </td>
+				<td> Photo </td>
 				<td><input type = "text" name = "photo" value= "<?=$vo->photo?> "/></td>
 			</tr>
 			<tr>
-				<td> address </td>
+				<td> Address </td>
 				<td><input type = "text" name = "address" value= "<?=$vo->address?> "/></td>
 			</tr>
 			<tr>
-				<td> email </td>
+				<td> Email </td>
 				<td><input type = "text" name = "email" value= "<?=$vo->email?> "/></td>
 			</tr>
 			<tr>
-				<td> phone </td>
+				<td> Phone </td>
 				<td><input type = "text" name = "phone" value= "<?=$vo->phone?> "/></td>
 			</tr>
 			<tr>
-				<td> social_security_no </td>
+				<td> Social Security No </td>
 				<td><input type = "text" name = "social_security_no" value= "<?=$vo->social_security_no?> "/></td>
 			</tr>
 			<tr colspan = "2">
@@ -87,31 +84,27 @@ include("class.driver.dao.php");
 			<input type = "hidden" name = "did" value= "<?=$vo->did?> "/>
 		<?}else{?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" /></td>
-			</tr>
-			<tr>
-				<td> name </td>
+				<td> Driver Name </td>
 				<td><input type = "text" name = "name" /></td>
 			</tr>
 			<tr>
-				<td> photo </td>
+				<td> Photo </td>
 				<td><input type = "text" name = "photo" /></td>
 			</tr>
 			<tr>
-				<td> address </td>
+				<td> Address </td>
 				<td><input type = "text" name = "address" /></td>
 			</tr>
 			<tr>
-				<td> email </td>
+				<td> Email </td>
 				<td><input type = "text" name = "email" /></td>
 			</tr>
 			<tr>
-				<td> phone </td>
+				<td> Phone </td>
 				<td><input type = "text" name = "phone" /></td>
 			</tr>
 			<tr>
-				<td> social_security_no </td>
+				<td> Social Security No </td>
 				<td><input type = "text" name = "social_security_no" /></td>
 			</tr>
 			<tr colspan = "2">

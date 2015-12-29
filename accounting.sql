@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2015 at 11:08 AM
+-- Generation Time: Dec 29, 2015 at 08:13 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `phone` text NOT NULL,
   `address` text NOT NULL,
   PRIMARY KEY (`comp_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `company`
@@ -62,7 +62,14 @@ CREATE TABLE IF NOT EXISTS `company` (
 INSERT INTO `company` (`comp_id`, `uid`, `title`, `phone`, `address`) VALUES
 (1, 20, 'weavebytes', '848484848', 'Mohali'),
 (2, 50, 'bigbytes', '858965262', 'Patiala'),
-(3, 450, 'interglobe', '+41526953635', '421-A CA Georgia');
+(3, 450, 'interglobe', '+41526953635', '421-A CA Georgia'),
+(4, 20, 'New Company', '3333', 'abc'),
+(5, 20, 'New Company', '3333', 'abc'),
+(6, 20, 'New Company', '3333', 'abc'),
+(7, 20, 'New Company', '3333', 'abc'),
+(8, 20, 'New Company', '3333', 'abc'),
+(9, 3, 'ABC Comp', '987654', '123 Office'),
+(10, 3, 'DDDDD', '11111', 'AAAA');
 
 -- --------------------------------------------------------
 
@@ -79,7 +86,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `phone` text NOT NULL,
   `email` text NOT NULL,
   PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`cust_id`, `uid`, `name`, `firm_name`, `address`, `phone`, `email`) VALUES
+(1, 3, 'new customer', 'aaa', '123 abc', '33344', 'xyz@gmail');
 
 -- --------------------------------------------------------
 
@@ -97,7 +111,14 @@ CREATE TABLE IF NOT EXISTS `driver` (
   `phone` text NOT NULL,
   `social_security_no` text NOT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `driver`
+--
+
+INSERT INTO `driver` (`did`, `uid`, `name`, `photo`, `address`, `email`, `phone`, `social_security_no`) VALUES
+(1, 3, 'New Driver', 'aa', '12 xyz', 'xyz@gmail.com', '77788', '11');
 
 -- --------------------------------------------------------
 
@@ -209,25 +230,26 @@ CREATE TABLE IF NOT EXISTS `upload` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE IF NOT EXISTS `user` (
   `user_id` int(5) NOT NULL AUTO_INCREMENT,
   `username` varchar(25) NOT NULL,
   `email` varchar(35) NOT NULL,
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `password`) VALUES
+INSERT INTO `user` (`user_id`, `username`, `email`, `password`) VALUES
 (1, 'sma', 'suraj@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(2, 'seema', 'seema@gmail.com', '202cb962ac59075b964b07152d234b70');
+(2, 'seema', 'seema@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(3, 'khushbu', 'khushbu@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

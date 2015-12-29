@@ -1,15 +1,15 @@
 <?php
+session_start();
 include("class.company.dao.php");
 include_once("header.php");
 $dao = new DAOcompany();
 ?>
 
 <a href="form.company.php" class="btn btn-success" role="button">Add Company</a> <br><br>
-<table class="table">
+<table class="table table-striped">
     <thead>
-	<tr class="success">
-		<td>Comp_id</td>
-		<td>Uid</td>
+	<tr class ="info">
+		<td>#</td>
 		<td>Title</td>
 		<td>Phone</td>
 		<td>Address</td>
@@ -27,7 +27,7 @@ else
 $limit1 = ($page-1)*$rec_per_page;
 $limit2 = ($page)*$rec_per_page;
 $total_recs = $dao->getCount();
-$rec = $dao->getAll($limit1, $limit2);
+$rec = $dao->getAllByUser($_SESSION["uid"], $limit1, $limit2);
 $pages = ceil($total_recs/$rec_per_page);
 if($page==1)	$prev = $page;
 else	$prev=$page-1;
@@ -35,12 +35,13 @@ else	$prev=$page-1;
 if($page==$pages)	$next = $page;
 else	$next=$page+1;
 
-foreach($rec as $row) {
+$i = 0;
+if ($rec) foreach($rec as $row) {
+	$i++;
 ?>
 	<tbody>
-	<tr class="danger">
-		<td><? echo $row->comp_id ?>	</td>
-		<td><? echo $row->uid ?>	</td>
+	<tr>
+		<td><? echo $i; ?>	</td>
 		<td><? echo $row->title ?>	</td>
 		<td><? echo $row->phone ?>	</td>
 		<td><? echo $row->address ?>	</td>
@@ -49,6 +50,7 @@ foreach($rec as $row) {
 	</tr>
 	</tbody>
 <?}
+else echo "<tr><td colspan='5'><center><br><br><br><b>No Companies are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

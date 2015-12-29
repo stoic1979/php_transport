@@ -131,6 +131,7 @@ include("header.php");
 include("class.truck.dao.php");
 ?>
 <center>
+	<h3>Add Truck Details</h3>
 <form name = "frmTruck" method="POST" action="save.truck.php"  onsubmit = "return validateTruck();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -139,99 +140,95 @@ include("class.truck.dao.php");
 			$vo = $dao->get($_GET["id"]);
 		?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" value= "<?=$vo->uid?> "/></td>
-			</tr>
-			<tr>
-				<td> make </td>
+				<td> Make </td>
 				<td><input type = "text" name = "make" value= "<?=$vo->make?> "/></td>
 			</tr>
 			<tr>
-				<td> yr_model </td>
+				<td> Year Model </td>
 				<td><input type = "text" name = "yr_model" value= "<?=$vo->yr_model?> "/></td>
 			</tr>
 			<tr>
-				<td> yr_first_sold </td>
+				<td> Year First Sold </td>
 				<td><input type = "text" name = "yr_first_sold" value= "<?=$vo->yr_first_sold?> "/></td>
 			</tr>
 			<tr>
-				<td> vlf_class </td>
+				<td> Vlf Class </td>
 				<td><input type = "text" name = "vlf_class" value= "<?=$vo->vlf_class?> "/></td>
 			</tr>
 			<tr>
-				<td> type_veh </td>
+				<td> Vehicle Type </td>
 				<td><input type = "text" name = "type_veh" value= "<?=$vo->type_veh?> "/></td>
 			</tr>
 			<tr>
-				<td> type_lic </td>
+				<td> License Type </td>
 				<td><input type = "text" name = "type_lic" value= "<?=$vo->type_lic?> "/></td>
 			</tr>
 			<tr>
-				<td> license_num </td>
+				<td> License Number </td>
 				<td><input type = "text" name = "license_num" value= "<?=$vo->license_num?> "/></td>
 			</tr>
 			<tr>
-				<td> body_type_model </td>
+				<td> Model Body Type </td>
 				<td><input type = "text" name = "body_type_model" value= "<?=$vo->body_type_model?> "/></td>
 			</tr>
 			<tr>
-				<td> mp </td>
+				<td> MP </td>
 				<td><input type = "text" name = "mp" value= "<?=$vo->mp?> "/></td>
 			</tr>
 			<tr>
-				<td> mo </td>
+				<td> MO </td>
 				<td><input type = "text" name = "mo" value= "<?=$vo->mo?> "/></td>
 			</tr>
 			<tr>
-				<td> ax </td>
+				<td> AX </td>
 				<td><input type = "text" name = "ax" value= "<?=$vo->ax?> "/></td>
 			</tr>
 			<tr>
-				<td> wc </td>
+				<td> WC </td>
 				<td><input type = "text" name = "wc" value= "<?=$vo->wc?> "/></td>
 			</tr>
 			<tr>
-				<td> unladen_g_cgw </td>
+				<td> Unladen G Cgw </td>
 				<td><input type = "text" name = "unladen_g_cgw" value= "<?=$vo->unladen_g_cgw?> "/></td>
 			</tr>
 			<tr>
-				<td> vehicle_id_num </td>
+				<td> Vehicle Id Num </td>
 				<td><input type = "text" name = "vehicle_id_num" value= "<?=$vo->vehicle_id_num?> "/></td>
 			</tr>
 			<tr>
-				<td> type_vehicle_use </td>
+				<td> Vehicle Use Type </td>
 				<td><input type = "text" name = "type_vehicle_use" value= "<?=$vo->type_vehicle_use?> "/></td>
 			</tr>
 			<tr>
-				<td> date_issued </td>
+				<td> Date Issued </td>
 				<td><input type = "text" name = "date_issued" value= "<?=$vo->date_issued?> "/></td>
 			</tr>
 			<tr>
-				<td> cc_alco </td>
+				<td> Cc Alco </td>
 				<td><input type = "text" name = "cc_alco" value= "<?=$vo->cc_alco?> "/></td>
 			</tr>
 			<tr>
-				<td> dt_fee_recvd </td>
+				<td> Date Fee Recieved </td>
 				<td><input type = "text" name = "dt_fee_recvd" value= "<?=$vo->dt_fee_recvd?> "/></td>
 			</tr>
 			<tr>
-				<td> pic </td>
+				<td> Picture </td>
 				<td><input type = "text" name = "pic" value= "<?=$vo->pic?> "/></td>
 			</tr>
 			<tr>
-				<td> registered_owner </td>
+				<td> Registered Owner </td>
 				<td><input type = "text" name = "registered_owner" value= "<?=$vo->registered_owner?> "/></td>
 			</tr>
 			<tr>
-				<td> amount_due </td>
+				<td> Amount Due </td>
 				<td><input type = "text" name = "amount_due" value= "<?=$vo->amount_due?> "/></td>
 			</tr>
 			<tr>
-				<td> amount_recvd </td>
+				<td> Amount Recieved </td>
 				<td><input type = "text" name = "amount_recvd" value= "<?=$vo->amount_recvd?> "/></td>
 			</tr>
 			<tr>
-				<td> amount_paid </td>
+				<td> Amount Paid </td>
 				<td><input type = "text" name = "amount_paid" value= "<?=$vo->amount_paid?> "/></td>
 			</tr>
 			<tr colspan = "2">
@@ -240,99 +237,95 @@ include("class.truck.dao.php");
 			<input type = "hidden" name = "truck_id" value= "<?=$vo->truck_id?> "/>
 		<?}else{?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" /></td>
-			</tr>
-			<tr>
-				<td> make </td>
+				<td> Make </td>
 				<td><input type = "text" name = "make" /></td>
 			</tr>
 			<tr>
-				<td> yr_model </td>
+				<td> Year Model </td>
 				<td><input type = "text" name = "yr_model" /></td>
 			</tr>
 			<tr>
-				<td> yr_first_sold </td>
+				<td> Year First Sold </td>
 				<td><input type = "text" name = "yr_first_sold" /></td>
 			</tr>
 			<tr>
-				<td> vlf_class </td>
+				<td> Vlf Class </td>
 				<td><input type = "text" name = "vlf_class" /></td>
 			</tr>
 			<tr>
-				<td> type_veh </td>
+				<td> Vehicle Type </td>
 				<td><input type = "text" name = "type_veh" /></td>
 			</tr>
 			<tr>
-				<td> type_lic </td>
+				<td> License Type </td>
 				<td><input type = "text" name = "type_lic" /></td>
 			</tr>
 			<tr>
-				<td> license_num </td>
+				<td> License Number </td>
 				<td><input type = "text" name = "license_num" /></td>
 			</tr>
 			<tr>
-				<td> body_type_model </td>
+				<td> Model Body Type </td>
 				<td><input type = "text" name = "body_type_model" /></td>
 			</tr>
 			<tr>
-				<td> mp </td>
+				<td> MP </td>
 				<td><input type = "text" name = "mp" /></td>
 			</tr>
 			<tr>
-				<td> mo </td>
+				<td> MO </td>
 				<td><input type = "text" name = "mo" /></td>
 			</tr>
 			<tr>
-				<td> ax </td>
+				<td> AX </td>
 				<td><input type = "text" name = "ax" /></td>
 			</tr>
 			<tr>
-				<td> wc </td>
+				<td> WC </td>
 				<td><input type = "text" name = "wc" /></td>
 			</tr>
 			<tr>
-				<td> unladen_g_cgw </td>
+				<td> Unladen G Cgw </td>
 				<td><input type = "text" name = "unladen_g_cgw" /></td>
 			</tr>
 			<tr>
-				<td> vehicle_id_num </td>
+				<td> Vehicle Id Num </td>
 				<td><input type = "text" name = "vehicle_id_num" /></td>
 			</tr>
 			<tr>
-				<td> type_vehicle_use </td>
+				<td> Vehicle Use Type </td>
 				<td><input type = "text" name = "type_vehicle_use" /></td>
 			</tr>
 			<tr>
-				<td> date_issued </td>
+				<td> Date Issued </td>
 				<td><input type = "text" name = "date_issued" /></td>
 			</tr>
 			<tr>
-				<td> cc_alco </td>
+				<td> Cc Alco </td>
 				<td><input type = "text" name = "cc_alco" /></td>
 			</tr>
 			<tr>
-				<td> dt_fee_recvd </td>
+				<td> Date Fee Recieved </td>
 				<td><input type = "text" name = "dt_fee_recvd" /></td>
 			</tr>
 			<tr>
-				<td> pic </td>
+				<td> Picture </td>
 				<td><input type = "text" name = "pic" /></td>
 			</tr>
 			<tr>
-				<td> registered_owner </td>
+				<td> Registered Owner </td>
 				<td><input type = "text" name = "registered_owner" /></td>
 			</tr>
 			<tr>
-				<td> amount_due </td>
+				<td> Amount Due </td>
 				<td><input type = "text" name = "amount_due" /></td>
 			</tr>
 			<tr>
-				<td> amount_recvd </td>
+				<td> Amount Recieved </td>
 				<td><input type = "text" name = "amount_recvd" /></td>
 			</tr>
 			<tr>
-				<td> amount_paid </td>
+				<td> Amount Paid </td>
 				<td><input type = "text" name = "amount_paid" /></td>
 			</tr>
 			<tr colspan = "2">

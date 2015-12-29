@@ -1,36 +1,36 @@
 <?php
+session_start();
 include("class.trailer.dao.php");
 include_once("header.php");
 $dao = new DAOtrailer();
 ?>
 <a href="form.trailer.php" class="btn btn-info">Add trailer</a>
 <table class="table table-striped">
-	<tr>
-		<td>trailer_id</td>
-		<td>uid</td>
-		<td>make</td>
-		<td>yr_model</td>
-		<td>yr_first_sold</td>
-		<td>vlf_class</td>
-		<td>type_veh</td>
-		<td>type_lic</td>
-		<td>license_num</td>
-		<td>body_type_model</td>
-		<td>mp</td>
-		<td>mo</td>
-		<td>ax</td>
-		<td>wc</td>
-		<td>unladen_g_cgw</td>
-		<td>vehicle_id_num</td>
-		<td>type_vehicle_use</td>
-		<td>date_issued</td>
-		<td>cc_alco</td>
-		<td>dt_fee_recvd</td>
-		<td>pic</td>
-		<td>registered_owner</td>
-		<td>amount_due</td>
-		<td>amount_recvd</td>
-		<td>amount_paid</td>
+	<tr class ="info">
+		<td>#</td>
+		<td>Make</td>
+		<td>Year Model</td>
+		<td>Year First Sold</td>
+		<td>Vlf Class</td>
+		<td>Vehicle Type</td>
+		<td>License Type</td>
+		<td>License Number</td>
+		<td>Model Body Type</td>
+		<td>MP</td>
+		<td>MO</td>
+		<td>AX</td>
+		<td>WC</td>
+		<td>Unladen G Cgw</td>
+		<td>Vehicle Id Num</td>
+		<td>Vehicle Use Type</td>
+		<td>Date Issued</td>
+		<td>Cc Alco</td>
+		<td>Date Fee Recieved</td>
+		<td>Picture</td>
+		<td>Registered Owner</td>
+		<td>Amount Due</td>
+		<td>Amount Recieved</td>
+		<td>Amount Paid</td>
 		<td><b>Edit</b></td>
 		<td><b>Delete</b></td>
 	</tr>
@@ -44,20 +44,20 @@ else
 $limit1 = ($page-1)*$rec_per_page;
 $limit2 = ($page)*$rec_per_page;
 $total_recs = $dao->getCount();
-$rec = $dao->getAll($limit1, $limit2);
+$rec = $dao->getAllByUser($_SESSION["uid"],$limit1, $limit2);
 $pages = ceil($total_recs/$rec_per_page);
 if($page==1)	$prev = $page;
 else	$prev=$page-1;
 
 if($page==$pages)	$next = $page;
 else	$next=$page+1;
-
-foreach($rec as $row) {
+$i = 0;
+if ($rec) foreach($rec as $row) {
+	$i++;
 ?>
 	<tr>
 	<tbody>
-		<td><? echo $row->trailer_id ?>	</td>
-		<td><? echo $row->uid ?>	</td>
+		<td><? echo $i ?>	</td>
 		<td><? echo $row->make ?>	</td>
 		<td><? echo $row->yr_model ?>	</td>
 		<td><? echo $row->yr_first_sold ?>	</td>
@@ -86,6 +86,7 @@ foreach($rec as $row) {
 	</tr>
 	</tbody>
 <?}
+else echo "<tr><td colspan='15'><center><br><br><br><b>No Trailers are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

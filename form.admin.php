@@ -28,11 +28,11 @@ include("class.admin.dao.php");
 			$vo = $dao->get($_GET["id"]);
 		?>
 			<tr>
-				<td> username </td>
+				<td> Username </td>
 				<td><input type = "text" name = "username" value= "<?=$vo->username?> "/></td>
 			</tr>
 			<tr>
-				<td> password </td>
+				<td> Password </td>
 				<td><input type = "text" name = "password" value= "<?=$vo->password?> "/></td>
 			</tr>
 			<tr colspan = "2">
@@ -41,11 +41,11 @@ include("class.admin.dao.php");
 			<input type = "hidden" name = "aid" value= "<?=$vo->aid?> "/>
 		<?}else{?>
 			<tr>
-				<td> username </td>
+				<td> Username </td>
 				<td><input type = "text" name = "username" /></td>
 			</tr>
 			<tr>
-				<td> password </td>
+				<td> Password </td>
 				<td><input type = "text" name = "password" /></td>
 			</tr>
 			<tr colspan = "2">

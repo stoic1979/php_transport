@@ -1,22 +1,22 @@
 <?php
+session_start();
 include("class.transaction.dao.php");
 include_once("header.php");
 $dao = new DAOtransaction();
 ?>
 <a href="form.transaction.php" class="btn btn-info">Add transaction</a><br><br>
 <table class="table table-striped">
-	<tr>
-		<td>tid</td>
-		<td>uid</td>
-		<td>title</td>
-		<td>date</td>
-		<td>type</td>
-		<td>info</td>
-		<td>amount</td>
-		<td>sender</td>
-		<td>receiver</td>
-		<td>description</td>
-		<td>is_paid</td>
+	<tr class ="info">
+		<td>#</td>
+		<td>Title</td>
+		<td>Date</td>
+		<td>Type</td>
+		<td>Info</td>
+		<td>Amount</td>
+		<td>Sender</td>
+		<td>Receiver</td>
+		<td>Description</td>
+		<td>Is Paid</td>
 		<td><b>Edit</b></td>
 		<td><b>Delete</b></td>
 	</tr>
@@ -30,20 +30,20 @@ else
 $limit1 = ($page-1)*$rec_per_page;
 $limit2 = ($page)*$rec_per_page;
 $total_recs = $dao->getCount();
-$rec = $dao->getAll($limit1, $limit2);
+$rec = $dao->getAllByUser($_SESSION["uid"],$limit1, $limit2);
 $pages = ceil($total_recs/$rec_per_page);
 if($page==1)	$prev = $page;
 else	$prev=$page-1;
 
 if($page==$pages)	$next = $page;
 else	$next=$page+1;
-
-foreach($rec as $row) {
+$i = 0;
+if($rec) foreach($rec as $row) {
+	$i++;
 ?>
 	<tr>
 	<tbody>
-		<td><? echo $row->tid ?>	</td>
-		<td><? echo $row->uid ?>	</td>
+		<td><? echo $i ?>	</td>
 		<td><? echo $row->title ?>	</td>
 		<td><? echo $row->date ?>	</td>
 		<td><? echo $row->type ?>	</td>
@@ -58,6 +58,7 @@ foreach($rec as $row) {
 	</tr>
 	</tbody>
 <?}
+else echo "<tr><td colspan='11'><center><br><br><br><b>No Transactions are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

@@ -1,24 +1,11 @@
-<?php 
-session_start();
-
-// check if user logged, else redirect to index page
-
-if(!isset($_SESSION['uid'])) header("Location: index.php");
-
-include("db.php");
-include("admin/class.user.dao.php");
-
-$uid = $_SESSION['uid'];
-$dao = new DAOuser();
-$user  = $dao->get($uid);
-?>
+<?php include("db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
@@ -37,11 +24,10 @@ $user  = $dao->get($uid);
 		
 
 	<ul class="nav navbar-nav navbar-right">
-	<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $user->username; ?>
-      <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <ul class="dropdown-menu">
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="logout.php?logout">Login</a></li>
+            <li><a href="#">Logout</a></li>
             </ul>
         </li>
 	</ul>

@@ -38,6 +38,22 @@ class DAOcompany {
 		return NULL;
 	}
 
+		/* returns all vo */
+	public function getAllByUser($uid, $limit1,$limit2){
+		$result=mysql_query("SELECT * FROM company where uid=$uid LIMIT " . $limit1 . "," . $limit2 );
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['address']);
+				$vo->comp_id = $row['comp_id'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
+
 	/* returns number of vo */
 	public function getCount(){
 		$result = mysql_num_rows(mysql_query("select * from company"));

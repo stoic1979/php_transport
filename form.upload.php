@@ -36,6 +36,8 @@ include("header.php");
 include("class.upload.dao.php");
 ?>
 <center>
+	<h3>Upload Form</h3>
+
 <form name = "frmUpload" method="POST" action="save.upload.php"  onsubmit = "return validateUpload();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
@@ -44,23 +46,25 @@ include("class.upload.dao.php");
 			$vo = $dao->get($_GET["id"]);
 		?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" value= "<?=$vo->uid?> "/></td>
-			</tr>
-			<tr>
-				<td> title </td>
+				<td> Title </td>
 				<td><input type = "text" name = "title" value= "<?=$vo->title?> "/></td>
 			</tr>
 			<tr>
-				<td> type </td>
-				<td><input type = "text" name = "type" value= "<?=$vo->type?> "/></td>
+				<td> Type </td>
+				<td><input type = "text" name = "type" list = "uploadType" value= "<?=$vo->type?> "/>
+				<datalist id = "uploadType">
+	                     <option value="Purchase">Purchase</option>
+                         <option value="Sale">Sale</option>
+                         <option value="Rent">Rent</option>
+                         <option value="Other">Other</option>
+                </datalist></td>
 			</tr>
 			<tr>
-				<td> date </td>
+				<td> Date </td>
 				<td><input type = "text" name = "date" value= "<?=$vo->date?> "/></td>
 			</tr>
 			<tr>
-				<td> img </td>
+				<td> Image </td>
 				<td><input type = "text" name = "img" value= "<?=$vo->img?> "/></td>
 			</tr>
 			<tr colspan = "2">
@@ -69,23 +73,19 @@ include("class.upload.dao.php");
 			<input type = "hidden" name = "upload_id" value= "<?=$vo->upload_id?> "/>
 		<?}else{?>
 			<tr>
-				<td> uid </td>
-				<td><input type = "text" name = "uid" /></td>
-			</tr>
-			<tr>
-				<td> title </td>
+				<td> Title </td>
 				<td><input type = "text" name = "title" /></td>
 			</tr>
 			<tr>
-				<td> type </td>
+				<td> Type </td>
 				<td><input type = "text" name = "type" /></td>
 			</tr>
 			<tr>
-				<td> date </td>
+				<td> Date </td>
 				<td><input type = "text" name = "date" /></td>
 			</tr>
 			<tr>
-				<td> img </td>
+				<td> Image </td>
 				<td><input type = "text" name = "img" /></td>
 			</tr>
 			<tr colspan = "2">
