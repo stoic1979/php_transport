@@ -5,7 +5,7 @@ include_once("header.php");
 $dao = new DAOtruck();
 ?>
 <a href="form.truck.php" class="btn btn-info">Add truck</a><br><br>
-<table class="table table-striped">
+<table class="table table-striped" >
 	<tr class ="info">
 		<td>#</td>
 		<td>Make</td>

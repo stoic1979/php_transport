@@ -12,6 +12,10 @@ $dao = new DAOcompany();
 		<td>#</td>
 		<td>Title</td>
 		<td>Phone</td>
+		<td>City</td>
+		<td>State</td>
+		<td>Pin Code</td>
+		<td>Country</td>
 		<td>Address</td>
 		<td><b>Edit</b></td>
 		<td><b>Delete</b></td>
@@ -44,13 +48,17 @@ if ($rec) foreach($rec as $row) {
 		<td><? echo $i; ?>	</td>
 		<td><? echo $row->title ?>	</td>
 		<td><? echo $row->phone ?>	</td>
+		<td><? echo $row->city ?>	</td>
+		<td><? echo $row->state ?>	</td>
+		<td><? echo $row->pin_code ?>	</td>
+		<td><? echo $row->country ?>	</td>
 		<td><? echo $row->address ?>	</td>
 		<th><a href='form.company.php?id=<? echo $row->comp_id ?>'><img src="img/edit.png" /></a></th>
 		<th><a href='delete.company.php?id=<? echo $row->comp_id ?>'><img src="img/del.png" /></a></th>
 	</tr>
 	</tbody>
 <?}
-else echo "<tr><td colspan='5'><center><br><br><br><b>No Companies are added yet.</b></center></td></tr>";
+else echo "<tr><td colspan='8'><center><br><br><br><b>No Companies are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

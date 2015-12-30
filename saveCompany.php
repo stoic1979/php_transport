@@ -2,7 +2,7 @@
 include("class.company.dao.php");
 include_once 'db.php';
 $dao = new DAOcompany();
-$vo  = new company($_POST["uid"],$_POST["title"],$_POST["phone"],$_POST["address"]);
+$vo  = new company($_POST["uid"],$_POST["title"],$_POST["phone"],$_POST["country"],$_POST["address"]);
 $dao->save($vo);
 echo "Record Saved <br><br>";
 echo "List of Companies With Details<br><br>";

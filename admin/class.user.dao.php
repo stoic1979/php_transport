@@ -63,7 +63,7 @@ class DAOuser {
 	public function insert(&$vo){
 		
 		 if(mysql_query("INSERT INTO user(user_id,username,password,email) VALUES('', '$vo->username','$vo->password','$vo->email')")){
-			$result = mysql_query("Select MAX(uid) from user");
+			$result = mysql_query("Select MAX(user_id) from user");
 			if($row = mysql_fetch_array($result)){
 				$vo->uid=$row[0];
 				echo "insert user 11111<br>";
@@ -75,7 +75,7 @@ class DAOuser {
 
 	/* update an existing record in db */
 	public function update(&$vo){
-		return mysql_query("UPDATE user SET username = '$vo->username',password = '$vo->password',email = '$vo->email' WHERE uid = $vo->uid ");
+		return mysql_query("UPDATE user SET username = '$vo->username',password = '$vo->password',email = '$vo->email' WHERE user_id = $vo->uid ");
 	}
 
 	/* save the value object in db */

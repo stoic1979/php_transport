@@ -40,7 +40,7 @@ class DAOtrailer {
 
 /* returns all vo by user */
 	public function getAllByUser($uid,$limit1,$limit2){
-		$result=mysql_query("SELECT * FROM trailer LIMIT where uid=$uid  " . $limit1 . "," . $limit2 );
+		$result=mysql_query("SELECT * FROM trailer where uid=$uid LIMIT   " . $limit1 . "," . $limit2 );
 		if($result){/*ensure query success*/
 			$vlist = array();
 			while($row = mysql_fetch_array($result)){/*ensure record*/

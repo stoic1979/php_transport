@@ -14,27 +14,17 @@ $password = mysql_real_escape_string($_POST['password']);
 // return back to login page, with pt=reg, ec=2
 
 
-$vo  = new user($uname, md5($password), $email);
-//$vo->show();
-$dao = new DAOuser();
-$dao->save($vo);
-header("Location: customer.php");
+$vo  = new user($uname, $upass , $email);
 
-// check later
+$dao = new DAOuser();
+//check if the user name and email are unique
 $useremail = $dao->getByEmail($email);
 $userpass  = $dao->getByPassword($password);
 //if a valid user then open customer page else display error
 if(($useremail == NULL) or ($userpass == NULL) ){
 	$dao->save($vo);
-	$new = $dao->getByEmailAndPassword($email, $password);
-	if ($new == NULL) {
-		//echo "NULL";
-	}
-	else{
-		$_SESSION["uid"] = $new->uid;
+
  	header("Location: customer.php");
-	}
-	
 }
 else { 
 	header("Location: index.php?pt=reg&ec=2");

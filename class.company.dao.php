@@ -13,7 +13,7 @@ class DAOcompany {
 		$result=mysql_query("SELECT * FROM company WHERE comp_id=$comp_id");
 		if($result){/*ensure query success*/
 			if($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['address']);
+				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['city'],$row['state'],$row['pin_code'],$row['country'],$row['address']);
 				$vo->comp_id = $comp_id;
 				return $vo;
 			}
@@ -28,7 +28,7 @@ class DAOcompany {
 		if($result){/*ensure query success*/
 			$vlist = array();
 			while($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['address']);
+				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['city'],$row['state'],$row['pin_code'],$row['country'],$row['address']);
 				$vo->comp_id = $row['comp_id'];
 				$vlist[] = $vo;
 			}
@@ -44,7 +44,7 @@ class DAOcompany {
 		if($result){/*ensure query success*/
 			$vlist = array();
 			while($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['address']);
+				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['city'],$row['state'],$row['pin_code'],$row['country'],$row['address']);
 				$vo->comp_id = $row['comp_id'];
 				$vlist[] = $vo;
 			}
@@ -62,7 +62,8 @@ class DAOcompany {
 
 	/* insert new record in db */
 	public function insert(&$vo){
-		 if(mysql_query("INSERT INTO company(comp_id,uid,title,phone,address) VALUES(' ', '$vo->uid','$vo->title','$vo->phone','$vo->address')")){
+		//var_dump($vo);
+		 if(mysql_query("INSERT INTO company(comp_id,uid,title,phone,city,state,pin_code,country,address) VALUES(' ', '$vo->uid','$vo->title','$vo->phone','$vo->city','$vo->state','$vo->pin_code','$vo->country','$vo->address')")){
 			$result = mysql_query("Select MAX(comp_id) from company");
 			if($row = mysql_fetch_array($result)){
 				$vo->comp_id=$row[0];
@@ -74,7 +75,7 @@ class DAOcompany {
 
 	/* update an existing record in db */
 	public function update(&$vo){
-		return mysql_query("UPDATE company SET uid = '$vo->uid',title = '$vo->title',phone = '$vo->phone',address = '$vo->address' WHERE comp_id = $vo->comp_id ");
+		return mysql_query("UPDATE company SET uid = '$vo->uid',title = '$vo->title',phone = '$vo->phone',city = '$vo->city',state = '$vo->state',pin_code = '$vo->pin_code',country = '$vo->country',address = '$vo->address' WHERE comp_id = $vo->comp_id ");
 	}
 
 	/* save the value object in db */

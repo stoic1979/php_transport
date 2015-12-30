@@ -28,9 +28,9 @@ $user  = $dao->get($uid);
 		<a href="company.php" class="navbar-brand">Company&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		<a href="customer.php" class="navbar-brand">Customer&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		<a href="driver.php" class="navbar-brand">Driver&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a href="truck.php" class="navbar-brand">Truck&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		<a href="trailer.php" class="navbar-brand">Trailer&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		<a href="transaction.php" class="navbar-brand">Transaction&nbsp;&nbsp;&nbsp;&nbsp;</a>
-		<a href="truck.php" class="navbar-brand">Truck&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		<a href="upload.php" class="navbar-brand">Upload&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		<a href="logout.php?logout" class="navbar-brand">Sign Out&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">oo</button>
@@ -56,13 +56,13 @@ $user  = $dao->get($uid);
           <h4 class="modal-title">Convenience Menu</h4>
         </div>
         <div class="modal-body">
-          <p><img src="img/company.png"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="img/customer.png"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="img/driver.png">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="img/trailor.png">  <br><br><br>
-			<img src="img/transaction.png"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="img/truck.png">    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="img/upload.png"> </p>
+          <p><a href = "company.php"><img src="img/company.png"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href = "customer.php"><img src="img/customer.png"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href = "driver.php"><img src="img/driver.png"></a>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href = "trailer.php"><img src="img/trailor.png"> </a> <br><br><br>
+			<a href = "transaction.php"><img src="img/transaction.png"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href = "truck.php"><img src="img/truck.png"> </a>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href = "upload.php"><img src="img/upload.png"></a> </p>
 			
         </div>
         <div class="modal-footer">

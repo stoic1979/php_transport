@@ -38,7 +38,7 @@ include("class.upload.dao.php");
 <center>
 	<h3>Upload Form</h3>
 
-<form name = "frmUpload" method="POST" action="save.upload.php"  onsubmit = "return validateUpload();">
+<form name = "frmUpload" method="POST" action="save.upload.php" enctype="multipart/form-data" onsubmit = "return validateUpload();">
 	<table cellspacing="5" cellpadding="5">
 		<?php
 		if(isset($_GET["id"])){
@@ -53,10 +53,10 @@ include("class.upload.dao.php");
 				<td> Type </td>
 				<td><input type = "text" name = "type" list = "uploadType" value= "<?=$vo->type?> "/>
 				<datalist id = "uploadType">
-	                     <option value="Purchase">Purchase</option>
-                         <option value="Sale">Sale</option>
-                         <option value="Rent">Rent</option>
-                         <option value="Other">Other</option>
+	               <option value="Purchase">Purchase</option>
+                   <option value="Sale">Sale</option>
+                   <option value="Rent">Rent</option>
+                   <option value="Other">Other</option>
                 </datalist></td>
 			</tr>
 			<tr>
@@ -65,7 +65,7 @@ include("class.upload.dao.php");
 			</tr>
 			<tr>
 				<td> Image </td>
-				<td><input type = "text" name = "img" value= "<?=$vo->img?> "/></td>
+				<td><input type = "file" name = "img" value= "<?=$vo->img?> "/></td>
 			</tr>
 			<tr colspan = "2">
 				<th><input type = "submit" value= "EDIT"  /></th>
@@ -78,7 +78,14 @@ include("class.upload.dao.php");
 			</tr>
 			<tr>
 				<td> Type </td>
-				<td><input type = "text" name = "type" /></td>
+				<td><input type = "text" name = "type" list = "uploadType" />
+				<datalist id = "uploadType">
+	               <option value="Purchase">Purchase</option>
+                   <option value="Sale">Sale</option>
+                   <option value="Rent">Rent</option>
+                   <option value="Other">Other</option>
+                </datalist>
+                </td>
 			</tr>
 			<tr>
 				<td> Date </td>
@@ -86,10 +93,10 @@ include("class.upload.dao.php");
 			</tr>
 			<tr>
 				<td> Image </td>
-				<td><input type = "text" name = "img" /></td>
+				<td><input type="file" name = "img"  id="fileToUpload"/></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>
+				<th><input type = "submit" name = "submit" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>
