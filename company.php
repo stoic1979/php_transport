@@ -4,7 +4,7 @@ include("class.company.dao.php");
 include_once("header.php");
 $dao = new DAOcompany();
 ?>
-
+<center><b><u><font face ="Britannic Bold"><h1>Company</h1></font></u></b></center><br><br><br>
 <a href="form.company.php" class="btn btn-success" role="button">Add Company</a> <br><br>
 <table class="table table-striped">
     <thead>
@@ -53,8 +53,8 @@ if ($rec) foreach($rec as $row) {
 		<td><? echo $row->pin_code ?>	</td>
 		<td><? echo $row->country ?>	</td>
 		<td><? echo $row->address ?>	</td>
-		<th><a href='form.company.php?id=<? echo $row->comp_id ?>'><img src="img/edit.png" /></a></th>
-		<th><a href='delete.company.php?id=<? echo $row->comp_id ?>'><img src="img/del.png" /></a></th>
+		<th><a href='form.company.php?id=<? echo $row->comp_id ?>'><img src="img/edit.png" width = 20 height = 20/></a></th>
+		<th><a href='delete.company.php?id=<? echo $row->comp_id ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
 	</tr>
 	</tbody>
 <?}

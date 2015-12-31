@@ -4,6 +4,7 @@ include("class.truck.dao.php");
 include_once("header.php");
 $dao = new DAOtruck();
 ?>
+<center><b><u><font face ="Britannic Bold"><h1>Truck</h1></font></u></b></center><br><br><br>
 <a href="form.truck.php" class="btn btn-info">Add truck</a><br><br>
 <table class="table table-striped" >
 	<tr class ="info">
@@ -81,8 +82,8 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->amount_due ?>	</td>
 		<td><? echo $row->amount_recvd ?>	</td>
 		<td><? echo $row->amount_paid ?>	</td>
-		<th><a href='form.truck.php?id=<? echo $row->truck_id ?>'><img src="img/edit.png" /></a></th>
-		<th><a href='delete.truck.php?id=<? echo $row->truck_id ?>'><img src="img/del.png" /></a></th>
+		<th><a href='form.truck.php?id=<? echo $row->truck_id ?>'><img src="img/edit.png" width = 20 height = 20/></a></th>
+		<th><a href='delete.truck.php?id=<? echo $row->truck_id ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
 	</tr>
 	</tbody>
 <?}

@@ -1,0 +1,82 @@
+Login: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="login"/></td>
+        <tr>
+            <td> Email/Username </td>
+            <td><input type = "text" name = "email" /></td>
+        </tr>
+        <tr>
+            <td> Password </td>
+            <td><input type="password" name="password" /></td>
+        </tr>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Login"  /></th>
+        </tr>
+    </table>
+</form>
+
+<br><br>
+
+
+Register User: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="register"/></td>
+        <tr>
+            <td> Username </td>
+            <td><input type = "text" name = "username" /></td>
+        </tr>
+        <tr>
+            <td> Email </td>
+            <td><input type = "text" name = "email" /></td>
+        </tr>
+        <tr>
+            <td> Password </td>
+            <td><input type="password" name="password" /></td>
+        </tr>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Register"  /></th>
+        </tr>
+    </table>
+</form>
+
+Add Message: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="sendmsg"/></td>
+        <tr>
+            <td> Sender ID:</td>
+            <td><input type = "text" name = "sid" /></td>
+        </tr>
+        <tr>
+            <td> Receiver ID:</td>
+            <td><input type = "text" name = "rid" /></td>
+        </tr>
+        <tr>
+            <td> Message:</td>
+            <td><input type = "text" name = "msg" /></td>
+        </tr>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Send Msg"  /></th>
+        </tr>
+    </table>
+</form>
+
+Get Messages Received: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="getmsg"/></td>
+        <tr>
+            <td> Recevier ID:</td>
+            <td><input type = "text" name = "rid" /></td>
+        </tr>
+        <tr>
+            <td> Message ID:</td>
+            <td><input type = "text" name = "mid" /></td>
+        </tr>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Get Msg"  /></th>
+        </tr>
+    </table>
+</form>

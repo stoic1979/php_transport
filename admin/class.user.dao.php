@@ -28,7 +28,7 @@ class DAOuser {
 		$result=mysql_query("SELECT * FROM user WHERE email='$email' and password='$hash'");
 		if($result){/*ensure query success*/
 			if($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new user($row['username'],$row['password'],$row['full_name'],$row['email'],$row['phone'],$row['address'],$row['creation_date'],$row['is_active']);
+				$vo = new user($row['username'],$row['password'],$row['email']);
 				$vo->uid = $row['user_id'];
 				return $vo;
 			}
@@ -66,7 +66,6 @@ class DAOuser {
 			$result = mysql_query("Select MAX(user_id) from user");
 			if($row = mysql_fetch_array($result)){
 				$vo->uid=$row[0];
-				echo "insert user 11111<br>";
 				return true;
 			}
 		}
@@ -125,7 +124,7 @@ class DAOuser {
 		$result=mysql_query("SELECT * FROM user WHERE email='$email'");
 		if($result){/*ensure query success*/
 			if($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new user($row['username'],$row['password'],$row['full_name'],$row['email'],$row['phone'],$row['address'],$row['creation_date'],$row['is_active']);
+				$vo = new user($row['username'],$row['password'],$row['email']);
 				$vo->uid = $row['user_id'];
 				return $vo;
 			}
@@ -134,13 +133,26 @@ class DAOuser {
 		return NULL;
 	}
 
-/* gets a vo by uid */
+    /* gets a vo by password */
 	public function getByPassword( $password){
 		$hash = md5($password);
 		$result=mysql_query("SELECT * FROM user WHERE password='$hash'");
 		if($result){/*ensure query success*/
 			if($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new user($row['username'],$row['password'],$row['full_name'],$row['email'],$row['phone'],$row['address'],$row['creation_date'],$row['is_active']);
+				$vo = new user($row['username'],$row['password'],$row['email']);
+				$vo->uid = $row['user_id'];
+				return $vo;
+			}
+		}
+
+		return NULL;
+	}
+	/* gets a vo by username */
+	public function getByUsername( $username){
+		$result=mysql_query("SELECT * FROM user WHERE username='$username'");
+		if($result){/*ensure query success*/
+			if($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new user($row['username'],$row['password'],$row['email']);
 				$vo->uid = $row['user_id'];
 				return $vo;
 			}

@@ -4,6 +4,7 @@ include("class.upload.dao.php");
 include_once("header.php");
 $dao = new DAOupload();
 ?>
+<center><b><u><font face ="Britannic Bold"><h1>Upload</h1></font></u></b></center><br><br><br>
 <a href="form.upload.php" class="btn btn-info">Add upload</a><br><br>
 <table class="table table-striped">
 	<tr class ="info">
@@ -43,8 +44,8 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->type ?>	</td>
 		<td><? echo $row->date ?>	</td>
 		<td><? echo $row->img ?>	</td>
-		<th><a href='form.upload.php?id=<? echo $row->upload_id ?>'><img src="img/edit.png" /></a></th>
-		<th><a href='delete.upload.php?id=<? echo $row->upload_id ?>'><img src="img/del.png" /></a></th>
+		<th><a href='form.upload.php?id=<? echo $row->upload_id ?>'><img src="img/edit.png" width = 20 height = 20 /></a></th>
+		<th><a href='delete.upload.php?id=<? echo $row->upload_id ?>'><img src="img/del.png" width = 20 height = 20 /></a></th>
 	</tr>
 	</tbody>
 <?}

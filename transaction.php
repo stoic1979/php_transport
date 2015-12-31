@@ -4,6 +4,7 @@ include("class.transaction.dao.php");
 include_once("header.php");
 $dao = new DAOtransaction();
 ?>
+<center><b><u><font face ="Britannic Bold"><h1>Transaction</h1></font></u></b></center><br><br><br>
 <a href="form.transaction.php" class="btn btn-info">Add transaction</a><br><br>
 <table class="table table-striped">
 	<tr class ="info">
@@ -53,8 +54,8 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->receiver ?>	</td>
 		<td><? echo $row->description ?>	</td>
 		<td><? echo $row->is_paid ?>	</td>
-		<th><a href='form.transaction.php?id=<? echo $row->tid ?>'><img src="img/edit.png" /></a></th>
-		<th><a href='delete.transaction.php?id=<? echo $row->tid ?>'><img src="img/del.png" /></a></th>
+		<th><a href='form.transaction.php?id=<? echo $row->tid ?>'><img src="img/edit.png" width = 20 height = 20/></a></th>
+		<th><a href='delete.transaction.php?id=<? echo $row->tid ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
 	</tr>
 	</tbody>
 <?}

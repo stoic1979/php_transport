@@ -65,12 +65,13 @@ include("class.upload.dao.php");
 			</tr>
 			<tr>
 				<td> Image </td>
-				<td><input type = "file" name = "img" value= "<?=$vo->img?> "/></td>
+				<td><input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+					<input type = "file" name = "img" id = "img" value= "<?=$vo->img?> "/></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" value= "EDIT"  /></th>
+				<th><input type = "submit" name = "upload" id = "upload" value= "EDIT"  /></th>
 			</tr>
-			<input type = "hidden" name = "upload_id" value= "<?=$vo->upload_id?> "/>
+			<input type = "hidden" value= "<?=$vo->upload_id?> "/>
 		<?}else{?>
 			<tr>
 				<td> Title </td>
@@ -93,10 +94,11 @@ include("class.upload.dao.php");
 			</tr>
 			<tr>
 				<td> Image </td>
-				<td><input type="file" name = "img"  id="fileToUpload"/></td>
+				<td><input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+					<input type="file" name = "img"  id="img"/></td>
 			</tr>
 			<tr colspan = "2">
-				<th><input type = "submit" name = "submit" class="btn btn-info" value= "ADD"  /></th>
+				<th><input type = "submit" name = "upload" id = "upload" class="btn btn-info" value= "ADD"  /></th>
 			</tr>
 		<?}?>
 	</table>

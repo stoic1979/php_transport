@@ -4,6 +4,7 @@ include("class.customer.dao.php");
 include_once("header.php");
 $dao = new DAOcustomer();
 ?>
+<center><b><u><font face ="Britannic Bold"><h1>Customer</h1></font></u></b></center><br><br><br>
 <a href="form.customer.php" class="btn btn-info">Add customer</a><br><br>
 <table class="table table-striped">
 	<tr class ="info">
@@ -45,8 +46,8 @@ if($rec)foreach($rec as $row) {
 		<td><? echo $row->address ?>	</td>
 		<td><? echo $row->phone ?>	</td>
 		<td><? echo $row->email ?>	</td>
-		<th><a href='form.customer.php?id=<? echo $row->cust_id ?>'><img src="img/edit.png" /></a></th>
-		<th><a href='delete.customer.php?id=<? echo $row->cust_id ?>'><img src="img/del.png" /></a></th>
+		<th><a href='form.customer.php?id=<? echo $row->cust_id ?>'><img src="img/edit.png" width = 20 height = 20/></a></th>
+		<th><a href='delete.customer.php?id=<? echo $row->cust_id ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
 	</tr>
 	<tbody>
 <?}

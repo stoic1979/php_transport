@@ -4,6 +4,7 @@ include("class.driver.dao.php");
 include_once("header.php");
 $dao = new DAOdriver();
 ?>
+<center><b><u><font face ="Britannic Bold"><h1>Driver</h1></font></u></b></center><br><br><br>
 <a href="form.driver.php" class="btn btn-info">Add driver</a><br><br>
 <table class="table table-striped">
 	<tr class ="info">
