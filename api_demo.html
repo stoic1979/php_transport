@@ -80,3 +80,41 @@ Get Messages Received: <br><hr>
         </tr>
     </table>
 </form>
+
+Add Company: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="addcompany"/></td>
+        <tr>
+            <td> Title:</td>
+            <td><input type = "text" name = "title" /></td>
+        </tr>
+        <tr>
+            <td> Phone:</td>
+            <td><input type = "text" name = "phone" /></td>
+        </tr>
+        <tr>
+            <td> City:</td>
+            <td><input type = "text" name = "city" /></td>
+        </tr>
+        <tr>
+            <td> State:</td>
+            <td><input type = "text" name = "state" /></td>
+        </tr>
+        <tr>
+            <td> Pin Code:</td>
+            <td><input type = "text" name = "pincode" /></td>
+        </tr>
+        <tr>
+            <td> Country:</td>
+            <td><input type = "text" name = "country" /></td>
+        </tr>
+        <tr>
+            <td> Address:</td>
+            <td><input type = "text" name = "address" /></td>
+        </tr>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Add Company"  /></th>
+        </tr>
+    </table>
+</form>

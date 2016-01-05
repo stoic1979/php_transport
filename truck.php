@@ -87,7 +87,7 @@ if($rec) foreach($rec as $row) {
 	</tr>
 	</tbody>
 <?}
-else echo "<tr><td colspan='15'><center><br><br><br><b>No Truck details are added yet.</b></center></td></tr>";
+else echo "<tr><td colspan='17'><center><br><br><br><b>No Truck details are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

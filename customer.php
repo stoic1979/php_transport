@@ -51,7 +51,7 @@ if($rec)foreach($rec as $row) {
 	</tr>
 	<tbody>
 <?}
-else echo "<tr><td colspan='7'><center><br><br><br><b>No Customers are added yet.</b></center></td></tr>";
+else echo "<tr><td colspan='9'><center><br><br><br><b>No Customers are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

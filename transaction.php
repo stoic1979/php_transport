@@ -59,7 +59,7 @@ if($rec) foreach($rec as $row) {
 	</tr>
 	</tbody>
 <?}
-else echo "<tr><td colspan='11'><center><br><br><br><b>No Transactions are added yet.</b></center></td></tr>";
+else echo "<tr><td colspan='13'><center><br><br><br><b>No Transactions are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?

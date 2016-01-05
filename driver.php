@@ -48,12 +48,12 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->email ?>	</td>
 		<td><? echo $row->phone ?>	</td>
 		<td><? echo $row->social_security_no ?>	</td>
-		<th><a href='form.driver.php?id=<? echo $row->did ?>'><img src="img/edit.png" /></a></th>
-		<th><a href='delete.driver.php?id=<? echo $row->did ?>'><img src="img/del.png" /></a></th>
+		<th><a href='form.driver.php?id=<? echo $row->did ?>'><img src="img/edit.png" width = 20 height = 20 /></a></th>
+		<th><a href='delete.driver.php?id=<? echo $row->did ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
 	</tr>
 	</tbody>
 <?}
-else echo "<tr><td colspan='8'><center><br><br><br><b>No Drivers are added yet.</b></center></td></tr>";
+else echo "<tr><td colspan='10'><center><br><br><br><b>No Drivers are added yet.</b></center></td></tr>";
 ?>
 </table>
 <?
