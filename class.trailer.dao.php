@@ -100,6 +100,22 @@ class DAOtrailer {
 		return NULL;
 	}
 
+	/* get vehicle id num from db corresponding to the truck id */
+	public function getVehicleId($uid){
+		
+		$result = mysql_query("Select vehicle_id_num from trailer where uid=$uid");
+		if($result){/*ensure query success */
+			$list = array();
+			while($row = mysql_fetch_array($result))
+			{
+			   $list[] = $row['vehicle_id_num'];
+			   
+			}
+		//echo join(', ', $row);
+		return $list;
+		}
+	}
+
  }
 /* DAOtrailer */
 ?>

@@ -89,7 +89,17 @@
 </script>
 <?php
 include("header.php");
+session_start();
 include("class.dispatch.dao.php");
+include_once ("db.php");
+include("class.truck.dao.php");
+include("class.trailer.dao.php");
+ $dao 		= new DAOtruck();
+ //$truckList = array();
+ $truckList = $dao->getVehicleId($_SESSION["uid"]);
+ $daoTrailer= new DAOtrailer();
+ $trailerList = $daoTrailer->getVehicleId($_SESSION["uid"]);
+ $count 	= count($truckList);
 ?>
 <center>
 	<h3>Add Dispatch</h3>
@@ -102,63 +112,75 @@ include("class.dispatch.dao.php");
 		?>
 			<tr>
 				<td> Carrier </td>
-				<td><input type = "text" name = "carrier" value= "<?=$vo->carrier?> "/></td>
+				<td><input type = "text" name = "carrier" style="width:198px" value= "<?=$vo->carrier?> "/></td>
 			</tr>
 			<tr>
 				<td> Phone </td>
-				<td><input type = "text" name = "phone" value= "<?=$vo->phone?> "/></td>
+				<td><input type = "text" name = "phone" style="width:198px" value= "<?=$vo->phone?> "/></td>
 			</tr>
 			<tr>
 				<td> Pieces </td>
-				<td><input type = "text" name = "pieces" value= "<?=$vo->pieces?> "/></td>
+				<td><input type = "text" name = "pieces" style="width:198px" value= "<?=$vo->pieces?> "/></td>
 			</tr>
 			<tr>
 				<td> Space </td>
-				<td><input type = "text" name = "space" value= "<?=$vo->space?> "/></td>
+				<td><input type = "text" name = "space" style="width:198px" value= "<?=$vo->space?> "/></td>
 			</tr>
 			<tr>
 				<td> Actual Weight </td>
-				<td><input type = "text" name = "act_wgt" value= "<?=$vo->act_wgt?> "/></td>
+				<td><input type = "text" name = "act_wgt" style="width:198px" value= "<?=$vo->act_wgt?> "/></td>
 			</tr>
 			<tr>
 				<td> Assumed Weight </td>
-				<td><input type = "text" name = "as_wgt" value= "<?=$vo->as_wgt?> "/></td>
+				<td><input type = "text" name = "as_wgt" style="width:198px" value= "<?=$vo->as_wgt?> "/></td>
 			</tr>
 			<tr>
 				<td> Type </td>
-				<td><input type = "text" name = "type" value= "<?=$vo->type?> "/></td>
+				<td><input type = "text" name = "type" style="width:198px" value= "<?=$vo->type?> "/></td>
 			</tr>
 			<tr>
 				<td> Attention </td>
-				<td><input type = "text" name = "attention" value= "<?=$vo->attention?> "/></td>
+				<td><input type = "text" name = "attention" style="width:198px" value= "<?=$vo->attention?> "/></td>
 			</tr>
 			<tr>
 				<td> Reference </td>
-				<td><input type = "text" name = "reference" value= "<?=$vo->reference?> "/></td>
+				<td><input type = "text" name = "reference" style="width:198px" value= "<?=$vo->reference?> "/></td>
 			</tr>
 			<tr>
 				<td> Trailer Id </td>
-				<td><input type = "text" name = "trailer_id" value= "<?=$vo->trailer_id?> "/></td>
+				<td><select name = "trailer_id" style="width:198px" value = "<?=$vo->trailer_id?>">
+                    <?php
+                    foreach( $trailerList as $name){ 
+                        echo "<option value=\"$name\">$name</option>";}
+                    ?>
+                   </select>
+               </td>
 			</tr>
 			<tr>
 				<td> Truck Id </td>
-				<td><input type = "text" name = "truck_id" value= "<?=$vo->truck_id?> "/></td>
+				<td><select name = "truck_id" style="width:198px" value = "<?=$vo->truck_id?>">
+                    <?php
+                    foreach( $truckList as $name){ 
+                        echo "<option value=\"$name\">$name</option>";}
+                    ?>
+                   </select>
+                </td>
 			</tr>
 			<tr>
 				<td> Pay Code </td>
-				<td><input type = "text" name = "pay_code" value= "<?=$vo->pay_code?> "/></td>
+				<td><input type = "text" name = "pay_code" style="width:198px" value= "<?=$vo->pay_code?> "/></td>
 			</tr>
 			<tr>
 				<td> Pay Type </td>
-				<td><input type = "text" name = "pay_type" value= "<?=$vo->pay_type?> "/></td>
+				<td><input type = "text" name = "pay_type" style="width:198px" value= "<?=$vo->pay_type?> "/></td>
 			</tr>
 			<tr>
 				<td> Rate </td>
-				<td><input type = "text" name = "rate" value= "<?=$vo->rate?> "/></td>
+				<td><input type = "text" name = "rate" style="width:198px" value= "<?=$vo->rate?> "/></td>
 			</tr>
 			<tr>
 				<td> Total </td>
-				<td><input type = "text" name = "total" value= "<?=$vo->total?> "/></td>
+				<td><input type = "text" name = "total" style="width:198px" value= "<?=$vo->total?> "/></td>
 			</tr>
 			<tr colspan = "2">
 				<th><input type = "submit" value= "EDIT"  /></th>
@@ -167,63 +189,75 @@ include("class.dispatch.dao.php");
 		<?}else{?>
 		<tr>
 				<td> Carrier </td>
-				<td><input type = "text" name = "carrier" /></td>
+				<td><input type = "text" style="width:198px" name = "carrier" /></td>
 			</tr>
 			<tr>
 				<td> Phone </td>
-				<td><input type = "text" name = "phone" /></td>
+				<td><input type = "text" style="width:198px" name = "phone" /></td>
 			</tr>
 			<tr>
 				<td> Pieces </td>
-				<td><input type = "text" name = "pieces" /></td>
+				<td><input type = "text" style="width:198px" name = "pieces" /></td>
 			</tr>
 			<tr>
 				<td> Space </td>
-				<td><input type = "text" name = "space" /></td>
+				<td><input type = "text" style="width:198px" name = "space" /></td>
 			</tr>
 			<tr>
 				<td> Actual Weight </td>
-				<td><input type = "text" name = "act_wgt" /></td>
+				<td><input type = "text" style="width:198px" name = "act_wgt" /></td>
 			</tr>
 			<tr>
 				<td> Assumed Weight </td>
-				<td><input type = "text" name = "as_wgt" /></td>
+				<td><input type = "text" style="width:198px" name = "as_wgt" /></td>
 			</tr>
 			<tr>
 				<td> Type </td>
-				<td><input type = "text" name = "type" /></td>
+				<td><input type = "text" style="width:198px" name = "type" /></td>
 			</tr>
 			<tr>
 				<td> Attention </td>
-				<td><input type = "text" name = "attention" /></td>
+				<td><input type = "text" style="width:198px" name = "attention" /></td>
 			</tr>
 			<tr>
 				<td> Reference </td>
-				<td><input type = "text" name = "reference" /></td>
+				<td><input type = "text" style="width:198px" name = "reference" /></td>
 			</tr>
 			<tr>
 				<td> Trailer Id </td>
-				<td><input type = "text" name = "trailer_id" /></td>
+				<td><select name = "trailer_id" style="width:198px">
+                    <?php
+                    foreach( $trailerList as $name){ 
+                        echo "<option value=\"$name\">$name</option>";}
+                    ?>
+                   </select>
+               </td>
 			</tr>
 			<tr>
 				<td> Truck Id </td>
-				<td><input type = "text" name = "truck_id" /></td>
+				<td><select name = "truck_id" style="width:198px">
+                    <?php
+                    foreach( $truckList as $name){ 
+                        echo "<option value=\"$name\">$name</option>";}
+                    ?>
+                   </select>
+               </td>
 			</tr>
 			<tr>
 				<td> Pay Code </td>
-				<td><input type = "text" name = "pay_code" /></td>
+				<td><input type = "text" style="width:198px" name = "pay_code" /></td>
 			</tr>
 			<tr>
 				<td> Pay Type </td>
-				<td><input type = "text" name = "pay_type" /></td>
+				<td><input type = "text" style="width:198px" name = "pay_type" /></td>
 			</tr>
 			<tr>
 				<td> Rate </td>
-				<td><input type = "text" name = "rate" /></td>
+				<td><input type = "text" style="width:198px" name = "rate" /></td>
 			</tr>
 			<tr>
 				<td> Total </td>
-				<td><input type = "text" name = "total" /></td>
+				<td><input type = "text" style="width:198px" name = "total" /></td>
 			</tr>
 			
 			<tr colspan = "2">
