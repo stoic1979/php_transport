@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 31, 2015 at 03:56 PM
+-- Generation Time: Jan 09, 2016 at 07:57 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -51,6 +51,8 @@ CREATE TABLE IF NOT EXISTS `company` (
   `uid` bigint(20) NOT NULL,
   `title` text NOT NULL,
   `phone` text NOT NULL,
+  `fax` text NOT NULL,
+  `email` text NOT NULL,
   `address` text NOT NULL,
   `country` text NOT NULL,
   `city` text NOT NULL,
@@ -63,23 +65,15 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`comp_id`, `uid`, `title`, `phone`, `address`, `country`, `city`, `state`, `pin_code`) VALUES
-(1, 20, 'weavebytes', '848484848', 'Mohali', '', '', '', ''),
-(2, 50, 'bigbytes', '858965262', 'Patiala', '', '', '', ''),
-(3, 450, 'interglobe', '+41526953635', '421-A CA Georgia', '', '', '', ''),
-(4, 20, 'New Company', '3333', 'abc', '', '', '', ''),
-(5, 20, 'New Company', '3333', 'abc', '', '', '', ''),
-(6, 20, 'New Company', '3333', 'abc', '', '', '', ''),
-(7, 20, 'New Company', '3333', 'abc', '', '', '', ''),
-(8, 20, 'New Company', '3333', 'abc', '', '', '', ''),
-(9, 3, 'ABC Comp', '987654', '123 Office', '', '', '', ''),
-(10, 3, 'DDDDD', '11111', 'AAAA', '', '', '', ''),
-(11, 9, 'IT Company ', '77440 ', ' 121 Street ', 'USA', '', '', ''),
-(12, 9, 'IT Company', '77440', 'Shanghai,China', 'China', '', '', ''),
-(13, 9, 'New Company', '88990', '19 new city', 'Sri Lanka', '', '', ''),
-(14, 9, 'New Company', '88990', '19 new city', 'Sri Lanka', '', '', ''),
-(16, 9, 'Android Game', '22113', '11 sss', 'India', '', '', ''),
-(18, 9, 'ggg', '777', '666', 'Denmark', 'uuu', 'kkk', '555');
+INSERT INTO `company` (`comp_id`, `uid`, `title`, `phone`, `fax`, `email`, `address`, `country`, `city`, `state`, `pin_code`) VALUES
+(1, 20, 'weavebytes', '848484848', '', '', 'Mohali', '', '', '', ''),
+(2, 50, 'bigbytes', '858965262', '', '', 'Patiala', '', '', '', ''),
+(3, 450, 'interglobe', '+41526953635', '', '', '421-A CA Georgia', '', '', '', ''),
+(9, 3, 'ABC Comp', '987654', '', '', '123 Office', '', '', '', ''),
+(10, 3, 'DDDDD', '11111', '', '', 'AAAA', '', '', '', ''),
+(11, 9, 'IT Company  ', '77440  ', ' 88800', ' www.it.com', ' 121 Street  ', 'United States', ' Pink City', ' New York', ' 1113'),
+(13, 9, 'New Company ', '88990 ', ' 99920', ' www.new.com', '19 new city ', 'India', ' Chandigarh', ' Punjab', ' 133111'),
+(18, 9, 'ggg ', '777 ', ' 888', ' www.ggg.com', '666 ', 'Denmark ', 'uuu ', 'kkk ', '555 ');
 
 -- --------------------------------------------------------
 
@@ -113,14 +107,19 @@ INSERT INTO `customer` (`cust_id`, `uid`, `name`, `firm_name`, `address`, `phone
 --
 
 CREATE TABLE IF NOT EXISTS `dispatch` (
-  `did` int(11) NOT NULL,
+  `did` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
   `carrier` text NOT NULL,
-  `phone` text NOT NULL,
   `pieces` int(11) NOT NULL,
   `space` int(11) NOT NULL,
   `act_wgt` double NOT NULL,
   `as_wgt` double NOT NULL,
   `type` text NOT NULL,
+  `pallets` int(11) NOT NULL,
+  `temp` int(11) NOT NULL,
+  `miles` int(11) NOT NULL,
+  `load_num` int(11) NOT NULL,
+  `load_terms` text NOT NULL,
   `attention` text NOT NULL,
   `reference` text NOT NULL,
   `trailer_id` int(11) NOT NULL,
@@ -129,8 +128,23 @@ CREATE TABLE IF NOT EXISTS `dispatch` (
   `pay_type` text NOT NULL,
   `rate` float NOT NULL,
   `total` float NOT NULL,
-  PRIMARY KEY (`did`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `advance` float NOT NULL,
+  `creation_date` date NOT NULL,
+  `bill_to` text NOT NULL,
+  `from_address` text NOT NULL,
+  `to_address` text NOT NULL,
+  PRIMARY KEY (`did`),
+  KEY `did` (`did`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `dispatch`
+--
+
+INSERT INTO `dispatch` (`did`, `uid`, `carrier`, `pieces`, `space`, `act_wgt`, `as_wgt`, `type`, `pallets`, `temp`, `miles`, `load_num`, `load_terms`, `attention`, `reference`, `trailer_id`, `truck_id`, `pay_code`, `pay_type`, `rate`, `total`, `advance`, `creation_date`, `bill_to`, `from_address`, `to_address`) VALUES
+(2, 9, 'IT Company  ', 2, 300, 400, 500, 'sss      ', 1, 30, 1190, 117, ' net 30', 'www      ', 'aa      ', 0, 888, 'ss      ', 'aaa      ', 400, 400, 200, '2016-01-07', ' New International Hub,111 New Street     ', ' Stanford, CA     ', 'SAS, MU '),
+(3, 3, 'ttt ', 7, 600, 500, 800, 'gen ', 0, 0, 0, 0, '', 'eee ', 'rr ', 3, 4, 'vv ', 'cash ', 6, 5000, 0, '0000-00-00', '', '', ''),
+(4, 9, 'New Company  ', 3, 400, 70, 80, 'jj  ', 0, 0, 0, 119, ' net 40', 'mm  ', 'hh  ', 0, 66, '55  ', 'gg  ', 600, 600, 200, '2016-01-04', 'IT Company CHD ', ' 121 Sector CHD', ' 28 Sector Mohali');
 
 -- --------------------------------------------------------
 
@@ -155,7 +169,33 @@ CREATE TABLE IF NOT EXISTS `driver` (
 --
 
 INSERT INTO `driver` (`did`, `uid`, `name`, `photo`, `address`, `email`, `phone`, `social_security_no`) VALUES
-(1, 3, 'New Driver', 'aa', '12 xyz', 'xyz@gmail.com', '77788', '11');
+(1, 3, 'New Driver ', 'aa ', '12 xyz ', 'xyz@gmail.com ', '77788 ', '12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `session`
+--
+
+CREATE TABLE IF NOT EXISTS `session` (
+  `session_id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `session_code` varchar(20) NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `session`
+--
+
+INSERT INTO `session` (`session_id`, `uid`, `start_time`, `end_time`, `session_code`) VALUES
+(1, 9, '2016-01-05 07:36:41', '2016-01-05 08:36:41', '2405423'),
+(2, 9, '2016-01-05 07:46:28', '2016-01-05 08:46:28', '2439970'),
+(3, 9, '2016-01-05 07:49:22', '2016-01-05 08:49:22', '1660645'),
+(4, 9, '2016-01-05 07:52:22', '2016-01-05 08:52:22', '2321773'),
+(5, 3, '2016-01-05 08:09:51', '2016-01-05 09:09:51', '204600');
 
 -- --------------------------------------------------------
 
@@ -189,15 +229,17 @@ CREATE TABLE IF NOT EXISTS `trailer` (
   `amount_due` float NOT NULL,
   `amount_recvd` float NOT NULL,
   `amount_paid` float NOT NULL,
+  `trailer_available` tinyint(1) NOT NULL,
   PRIMARY KEY (`trailer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `trailer`
 --
 
-INSERT INTO `trailer` (`trailer_id`, `uid`, `make`, `yr_model`, `yr_first_sold`, `vlf_class`, `type_veh`, `type_lic`, `license_num`, `body_type_model`, `mp`, `mo`, `ax`, `wc`, `unladen_g_cgw`, `vehicle_id_num`, `type_vehicle_use`, `date_issued`, `cc_alco`, `dt_fee_recvd`, `pic`, `registered_owner`, `amount_due`, `amount_recvd`, `amount_paid`) VALUES
-(1, 9, '11', '44', '77', '33', 'rr', 'rrr', '33', 'ffff', '77', '88', '66', '779', 'iii', 'kk', '77', '0000-00-00', '55', '0000-00-00', '', 'tt', 55, 66, 77);
+INSERT INTO `trailer` (`trailer_id`, `uid`, `make`, `yr_model`, `yr_first_sold`, `vlf_class`, `type_veh`, `type_lic`, `license_num`, `body_type_model`, `mp`, `mo`, `ax`, `wc`, `unladen_g_cgw`, `vehicle_id_num`, `type_vehicle_use`, `date_issued`, `cc_alco`, `dt_fee_recvd`, `pic`, `registered_owner`, `amount_due`, `amount_recvd`, `amount_paid`, `trailer_available`) VALUES
+(1, 9, '11', '44', '77', '33', 'rr', 'rrr', '33', 'ffff', '77', '88', '66', '779', 'iii', 'kk', '77', '0000-00-00', '55', '0000-00-00', '', 'tt', 55, 66, 77, 1),
+(2, 9, 'qq', '2012', '2014', 'ss', 'aa', 'rrr', '66', 'hh', 'gg', 'jj', 'kk', 'll', 'oo', '55', 'bbb', '0000-00-00', 'r', '0000-00-00', '', 'ww', 20000, 300000, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -259,16 +301,17 @@ CREATE TABLE IF NOT EXISTS `truck` (
   `amount_due` float NOT NULL,
   `amount_recvd` float NOT NULL,
   `amount_paid` float NOT NULL,
+  `truck_available` tinyint(1) NOT NULL,
   PRIMARY KEY (`truck_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `truck`
 --
 
-INSERT INTO `truck` (`truck_id`, `uid`, `make`, `yr_model`, `yr_first_sold`, `vlf_class`, `type_veh`, `type_lic`, `license_num`, `body_type_model`, `mp`, `mo`, `ax`, `wc`, `unladen_g_cgw`, `vehicle_id_num`, `type_vehicle_use`, `date_issued`, `cc_alco`, `dt_fee_recvd`, `pic`, `registered_owner`, `amount_due`, `amount_recvd`, `amount_paid`) VALUES
-(1, 9, '1', '2012', '2014', 'xxx', 'suv', 'permanent', '1111', 'metalic', '11', '12', '13', '14', 'sss', '15', 'daily', '0000-00-00', 'ddddd', '0000-00-00', '', 'mary', 20000, 100000, 120000),
-(2, 9, '11', '22', '333', 'ffff', 'ree', 'ff', '2222', 'ffff', 'tt', 'tt', 'gg', 'hh', 'hhh', '77', 'uuu', '0000-00-00', 'yy', '0000-00-00', '', 'yyy', 5, 6, 7);
+INSERT INTO `truck` (`truck_id`, `uid`, `make`, `yr_model`, `yr_first_sold`, `vlf_class`, `type_veh`, `type_lic`, `license_num`, `body_type_model`, `mp`, `mo`, `ax`, `wc`, `unladen_g_cgw`, `vehicle_id_num`, `type_vehicle_use`, `date_issued`, `cc_alco`, `dt_fee_recvd`, `pic`, `registered_owner`, `amount_due`, `amount_recvd`, `amount_paid`, `truck_available`) VALUES
+(4, 9, 'rrr', '2014', '2015', 'ee', 'yy', 'uu', '55', 'hh', 'jj', 'kk', 'll', 'ii', 'rr', '66', 'ss', '0000-00-00', 'ww', '0000-00-00', '', 'zzz', 60, 80, 90, 0),
+(5, 9, 'qq', '2012', '2014', 'zz', 'yy', 'oo', 'pp', 'll', 'mm', 'nn', 'zz', 'aa', 'xx', '888', 'uuu', '0000-00-00', 'r', '0000-00-00', '', 'tt', 20000, 100000, 120000, 0);
 
 -- --------------------------------------------------------
 
@@ -312,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `user`
@@ -326,7 +369,8 @@ INSERT INTO `user` (`user_id`, `username`, `email`, `password`) VALUES
 (6, 'sonia', 'sonia@gmail.com', '202cb962ac59075b964b07152d234b70'),
 (8, 'newUser', 'new@gmail.com', '202cb962ac59075b964b07152d234b70'),
 (9, 'john', 'john@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(11, 'mary', 'mary@gmail.com', '202cb962ac59075b964b07152d234b70');
+(11, 'mary', 'mary@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(12, 'user', 'mymail@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
