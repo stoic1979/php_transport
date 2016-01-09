@@ -9,13 +9,18 @@ $dao = new DAOdispatch();
 <table class="table table-striped">
 	<tr class ="info">
 		<td>#</td>
+		<td>Creation Date</td>
 		<td>Carrier</td>
-		<td>Phone</td>
 		<td>Pieces</td>
 		<td>Space</td>
 		<td>Actual Weight</td>
 		<td>Assumed Weight</td>
 		<td>Type</td>
+		<td>Pallets</td>
+		<td>Temp</td>
+		<td>Miles</td>
+		<td>Load#</td>
+		<td>Terms</td>
 		<td>Attention</td>
 		<td>Reference</td>
 		<td>Trailer Id</td>
@@ -23,9 +28,14 @@ $dao = new DAOdispatch();
 		<td>Pay Code</td>
 		<td>Pay Type</td>
 		<td>Rate</td>
+		<td>Advance</td>
 		<td>Total</td>
+		<td>Bill To</td>
+		<td>From Address</td>
+		<td>To Address</td>
 		<td><b>Edit</b></td>
 		<td><b>Delete</b></td>
+		<td><b>Generate Invoice</b></td>
 	</tr>
 
 <?php
@@ -51,13 +61,18 @@ if($rec) foreach($rec as $row) {
 	<tbody>
 	<tr>
 		<td><? echo $i ?>	</td>
+		<td><? echo $row->creation_date ?>	</td>
 		<td><? echo $row->carrier ?>	</td>
-		<td><? echo $row->phone ?>	</td>
 		<td><? echo $row->pieces ?>	</td>
 		<td><? echo $row->space ?>	</td>
 		<td><? echo $row->act_wgt ?>	</td>
 		<td><? echo $row->as_wgt ?>	</td>
 		<td><? echo $row->type ?>	</td>
+		<td><? echo $row->pallets ?>	</td>
+		<td><? echo $row->temp ?>	</td>
+		<td><? echo $row->miles ?>	</td>
+		<td><? echo $row->load_num ?>	</td>
+		<td><? echo $row->load_terms ?>	</td>
 		<td><? echo $row->attention ?>	</td>
 		<td><? echo $row->reference ?>	</td>
 		<td><? echo $row->trailer_id ?>	</td>
@@ -65,9 +80,14 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->pay_code ?>	</td>
 		<td><? echo $row->pay_type ?>	</td>
 		<td><? echo $row->rate ?>	</td>
+		<td><? echo $row->advance ?>	</td>
 		<td><? echo $row->total ?>	</td>
+		<td><? echo $row->bill_to ?>	</td>
+		<td><? echo $row->from_address ?>	</td>
+		<td><? echo $row->to_address ?>	</td>
 		<th><a href='form.dispatch.php?id=<? echo $row->did ?>'><img src="img/edit.png" width = 20 height = 20 /></a></th>
 		<th><a href='delete.dispatch.php?id=<? echo $row->did ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
+		<th><a href='invoice.php?id=<? echo $row->did ?>' target="_blank">INVOICE</a></th>
 	</tr>
 	</tbody>
 <?}

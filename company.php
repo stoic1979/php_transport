@@ -12,6 +12,8 @@ $dao = new DAOcompany();
 		<td>#</td>
 		<td>Title</td>
 		<td>Phone</td>
+		<td>Fax</td>
+		<td>Email</td>
 		<td>City</td>
 		<td>State</td>
 		<td>Pin Code</td>
@@ -48,6 +50,8 @@ if ($rec) foreach($rec as $row) {
 		<td><? echo $i; ?>	</td>
 		<td><? echo $row->title ?>	</td>
 		<td><? echo $row->phone ?>	</td>
+		<td><? echo $row->fax ?>	</td>
+		<td><? echo $row->email ?>	</td>
 		<td><? echo $row->city ?>	</td>
 		<td><? echo $row->state ?>	</td>
 		<td><? echo $row->pin_code ?>	</td>

@@ -101,9 +101,9 @@ class DAOtrailer {
 	}
 
 	/* get vehicle id num from db corresponding to the truck id */
-	public function getVehicleId($uid){
+	public function getVehicleId($uid,$t_av){
 		
-		$result = mysql_query("Select vehicle_id_num from trailer where uid=$uid");
+		$result = mysql_query("Select vehicle_id_num from trailer where (uid=$uid) and (trailer_available=$t_av)");
 		if($result){/*ensure query success */
 			$list = array();
 			while($row = mysql_fetch_array($result))
@@ -114,6 +114,11 @@ class DAOtrailer {
 		//echo join(', ', $row);
 		return $list;
 		}
+	}
+
+	public function setTrailerAvailable($uid,$t_av,$v_num){
+		
+		return mysql_query("UPDATE trailer SET trailer_available = $t_av where (uid=$uid) and (vehicle_id_num=$v_num)");
 	}
 
  }

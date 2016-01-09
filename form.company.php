@@ -6,7 +6,9 @@ session_start();
 
 		var uid =  document.forms["frmCompany"]["uid"].value; 
 		var title =  document.forms["frmCompany"]["title"].value; 
-		var phone =  document.forms["frmCompany"]["phone"].value; 
+		var phone =  document.forms["frmCompany"]["phone"].value;
+		var fax =  document.forms["frmCompany"]["fax"].value;
+		var email =  document.forms["frmCompany"]["email"].value; 
 		var country =  document.forms["frmCompany"]["country"].value;
 		var city =  document.forms["frmCompany"]["city"].value;
 		var state =  document.forms["frmCompany"]["state"].value;
@@ -25,16 +27,24 @@ session_start();
 			alert("phone can't be empty");
 			return false;
 		}
+		if(fax == null || fax == ""){
+			alert("fax can't be empty");
+			return false;
+		}
+		if(email == null || email == ""){
+			alert("email can't be empty");
+			return false;
+		}
 		if(city == null || city == ""){
-			alert("phone can't be empty");
+			alert("city can't be empty");
 			return false;
 		}
 		if(state == null || state == ""){
-			alert("phone can't be empty");
+			alert("state can't be empty");
 			return false;
 		}
 		if(pin_code == null || pin_code == ""){
-			alert("phone can't be empty");
+			alert("pin_code can't be empty");
 			return false;
 		}
 		if(country == null || country == ""){
@@ -69,6 +79,14 @@ include("class.company.dao.php");
 			<tr>
 				<td> Phone </td>
 				<td><input type = "text" name = "phone" value= "<?=$vo->phone?> "/></td>
+			</tr>
+			<tr>
+				<td> Fax </td>
+				<td><input type = "text" name = "fax" value= "<?=$vo->fax?> "/></td>
+			</tr>
+			<tr>
+				<td> Email </td>
+				<td><input type = "text" name = "email" value= "<?=$vo->email?> "/></td>
 			</tr>
 			<tr>
 				<td> City </td>
@@ -354,6 +372,14 @@ include("class.company.dao.php");
 			<tr>
 				<td> Phone </td>
 				<td><input type = "text" name = "phone" /></td>
+			</tr>
+			<tr>
+				<td> Fax </td>
+				<td><input type = "text" name = "fax" /></td>
+			</tr>
+			<tr>
+				<td> Email </td>
+				<td><input type = "text" name = "email" /></td>
 			</tr>
 			<tr>
 				<td> City </td>

@@ -1,14 +1,21 @@
 <script type = "text/javascript" >
+
+		
+
 	function validateDispatch(){ 
 
 		var uid =  document.forms["frmDispatch"]["uid"].value; 
 		var carrier =  document.forms["frmDispatch"]["carrier"].value; 
-		var phone =  document.forms["frmDispatch"]["phone"].value; 
 		var pieces =  document.forms["frmDispatch"]["pieces"].value; 
 		var space =  document.forms["frmDispatch"]["space"].value; 
 		var act_wgt =  document.forms["frmDispatch"]["act_wgt"].value; 
 		var as_wgt =  document.forms["frmDispatch"]["as_wgt"].value; 
-		var type =  document.forms["frmDispatch"]["type"].value; 
+		var type =  document.forms["frmDispatch"]["type"].value;
+		var pallets =  document.forms["frmDispatch"]["pallets"].value; 
+		var temp =  document.forms["frmDispatch"]["temp"].value;
+		var miles =  document.forms["frmDispatch"]["miles"].value;
+		var load_num =  document.forms["frmDispatch"]["load_num"].value;
+		var load_terms =  document.forms["frmDispatch"]["load_terms"].value;
 		var attention =  document.forms["frmDispatch"]["attention"].value; 
 		var reference =  document.forms["frmDispatch"]["reference"].value; 
 		var trailer_id =  document.forms["frmDispatch"]["trailer_id"].value; 
@@ -16,74 +23,111 @@
 		var pay_code =  document.forms["frmDispatch"]["pay_code"].value; 
 		var pay_type =  document.forms["frmDispatch"]["pay_type"].value; 
 		var rate =  document.forms["frmDispatch"]["rate"].value; 
+		var advance =  document.forms["frmDispatch"]["advance"].value;
 		var total =  document.forms["frmDispatch"]["total"].value; 
+		var bill_to =  document.forms["frmDispatch"]["bill_to"].value;
+		var from_address =  document.forms["frmDispatch"]["from_address"].value;
+		var to_address =  document.forms["frmDispatch"]["to_address"].value;
 		
 
 		if(uid == null || uid == ""){
 			alert("uid can't be empty");
 			return false;
 		}
+		
 		if(carrier == null || carrier == ""){
-			alert("make can't be empty");
-			return false;
-		}
-		if(phone == null || phone == ""){
-			alert("yr_model can't be empty");
-			return false;
-		}
-		if(pieces == null || pieces == ""){
-			alert("yr_first_sold can't be empty");
-			return false;
-		}
-		if(space == null || space == ""){
-			alert("vlf_class can't be empty");
-			return false;
-		}
-		if(act_wgt == null || act_wgt == ""){
-			alert("type_veh can't be empty");
-			return false;
-		}
-		if(as_wgt == null || as_wgt == ""){
-			alert("type_lic can't be empty");
-			return false;
-		}
-		if(type == null || type == ""){
-			alert("license_num can't be empty");
-			return false;
-		}
-		if(attention == null || attention == ""){
-			alert("body_type_model can't be empty");
-			return false;
-		}
-		if(reference == null || reference == ""){
-			alert("mp can't be empty");
-			return false;
-		}
-		if(trailer_id == null || trailer_id == ""){
-			alert("mo can't be empty");
-			return false;
-		}
-		if(truck_id == null || truck_id == ""){
-			alert("ax can't be empty");
-			return false;
-		}
-		if(pay_code == null || pay_code == ""){
-			alert("wc can't be empty");
-			return false;
-		}
-		if(pay_type == null || pay_type == ""){
-			alert("unladen_g_cgw can't be empty");
-			return false;
-		}
-		if(rate == null || rate == ""){
-			alert("vehicle_id_num can't be empty");
-			return false;
-		}
-		if(total == null || total == ""){
-			alert("type_vehicle_use can't be empty");
+			alert("carrier can't be empty");
 			return false;
 		}
 		
+		if(pieces == null || pieces == ""){
+			alert("pieces can't be empty");
+			return false;
+		}
+		if(space == null || space == ""){
+			alert("space can't be empty");
+			return false;
+		}
+		if(act_wgt == null || act_wgt == ""){
+			alert("act_wgt can't be empty");
+			return false;
+		}
+		if(as_wgt == null || as_wgt == ""){
+			alert("as_wgt can't be empty");
+			return false;
+		}
+		if(type == null || type == ""){
+			alert("type can't be empty");
+			return false;
+		}
+		if(pallets == null || pallets == ""){
+			alert("pallets can't be empty");
+			return false;
+		}
+		if(temp == null || temp == ""){
+			alert("temp can't be empty");
+			return false;
+		}
+		if(miles == null || miles == ""){
+			alert("miles can't be empty");
+			return false;
+		}
+		if(load_num == null || load_num == ""){
+			alert("load_num can't be empty");
+			return false;
+		}
+		if(load_terms == null || load_terms == ""){
+			alert("load_terms can't be empty");
+			return false;
+		}
+		if(attention == null || attention == ""){
+			alert("attention can't be empty");
+			return false;
+		}
+		if(reference == null || reference == ""){
+			alert("reference can't be empty");
+			return false;
+		}
+		if(trailer_id == null || trailer_id == ""){
+			alert("trailer_id can't be empty");
+			return false;
+		}
+		if(truck_id == null || truck_id == ""){
+			alert("truck_id can't be empty");
+			return false;
+		}
+		if(pay_code == null || pay_code == ""){
+			alert("pay_code can't be empty");
+			return false;
+		}
+		if(pay_type == null || pay_type == ""){
+			alert("pay_type can't be empty");
+			return false;
+		}
+		if(rate == null || rate == ""){
+			alert("rate can't be empty");
+			return false;
+		}
+		if(advance == null || advance == ""){
+			alert("advance can't be empty");
+			return false;
+		}
+		if(total == null || total == ""){
+			alert("total can't be empty");
+			return false;
+		}
+		if(bill_to == null || bill_to == ""){
+			alert("bill_to can't be empty");
+			return false;
+		}
+		if(from_address == null || from_address == ""){
+			alert("from_address can't be empty");
+			return false;
+		}
+		if(to_address == null || to_address == ""){
+			alert("to_address can't be empty");
+			return false;
+		}
 		return true;
 	}
 </script>
@@ -91,15 +135,17 @@
 include("header.php");
 session_start();
 include("class.dispatch.dao.php");
+include("class.company.dao.php");
 include_once ("db.php");
 include("class.truck.dao.php");
 include("class.trailer.dao.php");
  $dao 		= new DAOtruck();
- //$truckList = array();
- $truckList = $dao->getVehicleId($_SESSION["uid"]);
+ $truckList = $dao->getVehicleId($_SESSION["uid"],1);
  $daoTrailer= new DAOtrailer();
- $trailerList = $daoTrailer->getVehicleId($_SESSION["uid"]);
+ $trailerList = $daoTrailer->getVehicleId($_SESSION["uid"],1);
  $count 	= count($truckList);
+ $daoCompany= new DAOcompany();
+ $companyList = $daoCompany->getCompanyName($_SESSION["uid"]);
 ?>
 <center>
 	<h3>Add Dispatch</h3>
@@ -110,14 +156,18 @@ include("class.trailer.dao.php");
 			$dao = new DAOdispatch();
 			$vo = $dao->get($_GET["id"]);
 		?>
+			
 			<tr>
 				<td> Carrier </td>
-				<td><input type = "text" name = "carrier" style="width:198px" value= "<?=$vo->carrier?> "/></td>
+				<td><select name = "carrier" style="width:198px" value = "<?=$vo->carrier?>">
+                    <?php
+                    foreach( $companyList as $name){ 
+                        echo "<option value=\"$name\">$name</option>";}
+                    ?>
+                   </select>
+               </td>
 			</tr>
-			<tr>
-				<td> Phone </td>
-				<td><input type = "text" name = "phone" style="width:198px" value= "<?=$vo->phone?> "/></td>
-			</tr>
+			
 			<tr>
 				<td> Pieces </td>
 				<td><input type = "text" name = "pieces" style="width:198px" value= "<?=$vo->pieces?> "/></td>
@@ -137,6 +187,26 @@ include("class.trailer.dao.php");
 			<tr>
 				<td> Type </td>
 				<td><input type = "text" name = "type" style="width:198px" value= "<?=$vo->type?> "/></td>
+			</tr>
+			<tr>
+				<td> Pallets </td>
+				<td><input type = "text" name = "pallets" style="width:198px" value= "<?=$vo->pallets?> "/></td>
+			</tr>
+			<tr>
+				<td> Temp </td>
+				<td><input type = "text" name = "temp" style="width:198px" value= "<?=$vo->temp?> "/></td>
+			</tr>
+			<tr>
+				<td> Miles </td>
+				<td><input type = "text" name = "miles" style="width:198px" value= "<?=$vo->miles?> "/></td>
+			</tr>
+			<tr>
+				<td> Load# </td>
+				<td><input type = "text" name = "load_num" style="width:198px" value= "<?=$vo->load_num?> "/></td>
+			</tr>
+			<tr>
+				<td> Terms </td>
+				<td><input type = "text" name = "load_terms" style="width:198px" value= "<?=$vo->load_terms?> "/></td>
 			</tr>
 			<tr>
 				<td> Attention </td>
@@ -179,21 +249,40 @@ include("class.trailer.dao.php");
 				<td><input type = "text" name = "rate" style="width:198px" value= "<?=$vo->rate?> "/></td>
 			</tr>
 			<tr>
+				<td> Advance </td>
+				<td><input type = "text" name = "advance" style="width:198px" value= "<?=$vo->advance?> "/></td>
+			</tr>
+			<tr>
 				<td> Total </td>
 				<td><input type = "text" name = "total" style="width:198px" value= "<?=$vo->total?> "/></td>
+			</tr>
+			<tr>
+				<td> Bill To </td>
+				<td><input type = "text" name = "bill_to" style="width:198px" value= "<?=$vo->bill_to?> "/></td>
+			</tr>
+			<tr>
+				<td> From Address </td>
+				<td><input type = "text" name = "from_address" style="width:198px" value= "<?=$vo->from_address?> "/></td>
+			</tr>
+			<tr>
+				<td> To Address </td>
+				<td><input type = "text" name = "to_address" style="width:198px" value= "<?=$vo->to_address?> "/></td>
 			</tr>
 			<tr colspan = "2">
 				<th><input type = "submit" value= "EDIT"  /></th>
 			</tr>
 			<input type = "hidden" name = "did" value= "<?=$vo->did?> "/>
 		<?}else{?>
-		<tr>
-				<td> Carrier </td>
-				<td><input type = "text" style="width:198px" name = "carrier" /></td>
-			</tr>
+			
 			<tr>
-				<td> Phone </td>
-				<td><input type = "text" style="width:198px" name = "phone" /></td>
+				<td> Carrier </td>
+				<td><select name = "carrier" style="width:198px">
+                    <?php
+                    foreach( $companyList as $name){ 
+                        echo "<option value=\"$name\">$name</option>";}
+                    ?>
+                   </select>
+               </td>
 			</tr>
 			<tr>
 				<td> Pieces </td>
@@ -214,6 +303,26 @@ include("class.trailer.dao.php");
 			<tr>
 				<td> Type </td>
 				<td><input type = "text" style="width:198px" name = "type" /></td>
+			</tr>
+			<tr>
+				<td> Pallets </td>
+				<td><input type = "text" style="width:198px" name = "pallets" /></td>
+			</tr>
+			<tr>
+				<td> Temp </td>
+				<td><input type = "text" style="width:198px" name = "temp" /></td>
+			</tr>
+			<tr>
+				<td> Miles </td>
+				<td><input type = "text" style="width:198px" name = "miles" /></td>
+			</tr>
+			<tr>
+				<td> Load# </td>
+				<td><input type = "text" style="width:198px" name = "load_num" /></td>
+			</tr>
+			<tr>
+				<td> Terms </td>
+				<td><input type = "text" style="width:198px" name = "load_terms" /></td>
 			</tr>
 			<tr>
 				<td> Attention </td>
@@ -256,8 +365,24 @@ include("class.trailer.dao.php");
 				<td><input type = "text" style="width:198px" name = "rate" /></td>
 			</tr>
 			<tr>
+				<td> Advance </td>
+				<td><input type = "text" style="width:198px" name = "advance" /></td>
+			</tr>
+			<tr>
 				<td> Total </td>
 				<td><input type = "text" style="width:198px" name = "total" /></td>
+			</tr>
+			<tr>
+				<td> Bill To </td>
+				<td><input type = "text" style="width:198px" name = "bill_to" /></td>
+			</tr>
+			<tr>
+				<td> From Address </td>
+				<td><input type = "text" style="width:198px" name = "from_address" /></td>
+			</tr>
+			<tr>
+				<td> To Address </td>
+				<td><input type = "text" style="width:198px" name = "to_address" /></td>
 			</tr>
 			
 			<tr colspan = "2">

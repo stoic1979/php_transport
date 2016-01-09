@@ -102,9 +102,9 @@ class DAOtruck {
 	}
 
 	/* get vehicle id num from db corresponding to the truck id */
-	public function getVehicleId($uid){
+	public function getVehicleId($uid,$t_av){
 	
-		$result = mysql_query("Select vehicle_id_num from truck where uid = $uid");
+		$result = mysql_query("Select vehicle_id_num from truck where (uid = $uid) and (truck_available = $t_av)");
 		
 		if($result){
 			$list = array();
@@ -116,6 +116,11 @@ class DAOtruck {
 		//echo join(', ', $row);
 		return $list;
 		}
+	}
+
+	public function setTruckAvailable($uid,$t_av,$v_num){
+		
+		return mysql_query("UPDATE truck SET truck_available = $t_av where (uid=$uid) and (vehicle_id_num=$v_num)");
 	}
 
  }

@@ -6,7 +6,7 @@
 /* value object to represent trailer */ 
 class trailer { 
 
-	var $trailer_id, $uid, $make, $yr_model, $yr_first_sold, $vlf_class, $type_veh, $type_lic, $license_num, $body_type_model, $mp, $mo, $ax, $wc, $unladen_g_cgw, $vehicle_id_num, $type_vehicle_use, $date_issued, $cc_alco, $dt_fee_recvd, $pic, $registered_owner, $amount_due, $amount_recvd, $amount_paid;
+	var $trailer_id, $uid, $make, $yr_model, $yr_first_sold, $vlf_class, $type_veh, $type_lic, $license_num, $body_type_model, $mp, $mo, $ax, $wc, $unladen_g_cgw, $vehicle_id_num, $type_vehicle_use, $date_issued, $cc_alco, $dt_fee_recvd, $pic, $registered_owner, $amount_due, $amount_recvd, $amount_paid ,$trailer_available;
 
 	/* constructor */ 
 	public function __construct($uid, $make, $yr_model, $yr_first_sold, $vlf_class, $type_veh, $type_lic, $license_num, $body_type_model, $mp, $mo, $ax, $wc, $unladen_g_cgw, $vehicle_id_num, $type_vehicle_use, $date_issued, $cc_alco, $dt_fee_recvd, $pic, $registered_owner, $amount_due, $amount_recvd, $amount_paid) { 
@@ -34,6 +34,7 @@ class trailer {
 		$this->amount_due = $amount_due;
 		$this->amount_recvd = $amount_recvd;
 		$this->amount_paid = $amount_paid;
+		$this->trailer_available = 1;
 		$this->trailer_id = 0;
 	} 
 
@@ -63,6 +64,7 @@ class trailer {
 			"registered_owner" => $this->registered_owner,
 			"amount_due" => $this->amount_due,
 			"amount_recvd" => $this->amount_recvd,
+			"trailer_available" => $this->trailer_available,
 			"amount_paid" => $this->amount_paid);
 		return json_encode($a);
 	}
@@ -99,6 +101,7 @@ class trailer {
 				echo "<tr><td>registered_owner</td><td>$this->registered_owner</td></tr>";
 				echo "<tr><td>amount_due</td><td>$this->amount_due</td></tr>";
 				echo "<tr><td>amount_recvd</td><td>$this->amount_recvd</td></tr>";
+				echo "<tr><td>trailer_available</td><td>$this->trailer_available</td></tr>";
 				echo "<tr><td>amount_paid</td><td>$this->amount_paid</td></tr>";
 		echo "</table>";
 	} 

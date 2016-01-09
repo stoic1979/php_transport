@@ -34,6 +34,7 @@ class truck {
 		$this->amount_due = $amount_due;
 		$this->amount_recvd = $amount_recvd;
 		$this->amount_paid = $amount_paid;
+		$this->truck_available = 1;
 		$this->truck_id = 0;
 	} 
 
@@ -63,6 +64,7 @@ class truck {
 			"registered_owner" => $this->registered_owner,
 			"amount_due" => $this->amount_due,
 			"amount_recvd" => $this->amount_recvd,
+			"truck_available" => $this->truck_available,
 			"amount_paid" => $this->amount_paid);
 		return json_encode($a);
 	}
@@ -99,6 +101,7 @@ class truck {
 				echo "<tr><td>registered_owner</td><td>$this->registered_owner</td></tr>";
 				echo "<tr><td>amount_due</td><td>$this->amount_due</td></tr>";
 				echo "<tr><td>amount_recvd</td><td>$this->amount_recvd</td></tr>";
+				echo "<tr><td>truck_available</td><td>$this->truck_available</td></tr>";
 				echo "<tr><td>amount_paid</td><td>$this->amount_paid</td></tr>";
 		echo "</table>";
 	} 
