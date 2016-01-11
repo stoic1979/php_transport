@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 09, 2016 at 07:57 PM
+-- Generation Time: Jan 11, 2016 at 07:18 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -133,6 +133,7 @@ CREATE TABLE IF NOT EXISTS `dispatch` (
   `bill_to` text NOT NULL,
   `from_address` text NOT NULL,
   `to_address` text NOT NULL,
+  `pickup_num` text NOT NULL,
   PRIMARY KEY (`did`),
   KEY `did` (`did`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
@@ -141,10 +142,11 @@ CREATE TABLE IF NOT EXISTS `dispatch` (
 -- Dumping data for table `dispatch`
 --
 
-INSERT INTO `dispatch` (`did`, `uid`, `carrier`, `pieces`, `space`, `act_wgt`, `as_wgt`, `type`, `pallets`, `temp`, `miles`, `load_num`, `load_terms`, `attention`, `reference`, `trailer_id`, `truck_id`, `pay_code`, `pay_type`, `rate`, `total`, `advance`, `creation_date`, `bill_to`, `from_address`, `to_address`) VALUES
-(2, 9, 'IT Company  ', 2, 300, 400, 500, 'sss      ', 1, 30, 1190, 117, ' net 30', 'www      ', 'aa      ', 0, 888, 'ss      ', 'aaa      ', 400, 400, 200, '2016-01-07', ' New International Hub,111 New Street     ', ' Stanford, CA     ', 'SAS, MU '),
-(3, 3, 'ttt ', 7, 600, 500, 800, 'gen ', 0, 0, 0, 0, '', 'eee ', 'rr ', 3, 4, 'vv ', 'cash ', 6, 5000, 0, '0000-00-00', '', '', ''),
-(4, 9, 'New Company  ', 3, 400, 70, 80, 'jj  ', 0, 0, 0, 119, ' net 40', 'mm  ', 'hh  ', 0, 66, '55  ', 'gg  ', 600, 600, 200, '2016-01-04', 'IT Company CHD ', ' 121 Sector CHD', ' 28 Sector Mohali');
+INSERT INTO `dispatch` (`did`, `uid`, `carrier`, `pieces`, `space`, `act_wgt`, `as_wgt`, `type`, `pallets`, `temp`, `miles`, `load_num`, `load_terms`, `attention`, `reference`, `trailer_id`, `truck_id`, `pay_code`, `pay_type`, `rate`, `total`, `advance`, `creation_date`, `bill_to`, `from_address`, `to_address`, `pickup_num`) VALUES
+(2, 0, 'IT Company  ', 111, 3, 123, 4, '123 ', 2000, 888, 0, 0, '400 ', '4 ', '2  ', 300, 0, '66', '0 ', 0, 0, 400, '0000-00-00', '1000 ', '30 ', '1190   ', '117  '),
+(3, 3, 'ttt ', 7, 600, 500, 800, 'gen ', 0, 0, 0, 0, '', 'eee ', 'rr ', 3, 4, 'vv ', 'cash ', 6, 5000, 0, '0000-00-00', '', '', '', ''),
+(4, 9, '11', 4, 111, 4, 3, '400       ', 0, 600, 600, 5591, 'net 30', '70        ', '80        ', 55, 66, '0       ', '888       ', 66, 55, 0, '2016-01-11', '119       ', '121 Sector CHD      ', 'IT Park Mohali      ', '111      '),
+(5, 9, '13', 5, 600, 800, 900, 'gen  ', 5, 6, 789, 5554, 'net 60  ', 'ff  ', 'rr45  ', 11, 888, '555  ', 'cash  ', 500, 500, 200, '2016-01-11', 'A to C Company  ', '45 Sector CHD  ', '76 Sector Mohali  ', '332  ');
 
 -- --------------------------------------------------------
 
@@ -238,8 +240,8 @@ CREATE TABLE IF NOT EXISTS `trailer` (
 --
 
 INSERT INTO `trailer` (`trailer_id`, `uid`, `make`, `yr_model`, `yr_first_sold`, `vlf_class`, `type_veh`, `type_lic`, `license_num`, `body_type_model`, `mp`, `mo`, `ax`, `wc`, `unladen_g_cgw`, `vehicle_id_num`, `type_vehicle_use`, `date_issued`, `cc_alco`, `dt_fee_recvd`, `pic`, `registered_owner`, `amount_due`, `amount_recvd`, `amount_paid`, `trailer_available`) VALUES
-(1, 9, '11', '44', '77', '33', 'rr', 'rrr', '33', 'ffff', '77', '88', '66', '779', 'iii', 'kk', '77', '0000-00-00', '55', '0000-00-00', '', 'tt', 55, 66, 77, 1),
-(2, 9, 'qq', '2012', '2014', 'ss', 'aa', 'rrr', '66', 'hh', 'gg', 'jj', 'kk', 'll', 'oo', '55', 'bbb', '0000-00-00', 'r', '0000-00-00', '', 'ww', 20000, 300000, 7, 1);
+(1, 9, '11', '44', '77', '33', 'rr', 'rrr', '33', 'ffff', '77', '88', '66', '779', 'iii', '11', '77', '0000-00-00', '55', '0000-00-00', '', 'tt', 55, 66, 77, 0),
+(2, 9, 'qq', '2012', '2014', 'ss', 'aa', 'rrr', '66', 'hh', 'gg', 'jj', 'kk', 'll', 'oo', '55', 'bbb', '0000-00-00', 'r', '0000-00-00', '', 'ww', 20000, 300000, 7, 0);
 
 -- --------------------------------------------------------
 

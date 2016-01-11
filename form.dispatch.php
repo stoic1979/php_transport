@@ -5,7 +5,8 @@
 	function validateDispatch(){ 
 
 		var uid =  document.forms["frmDispatch"]["uid"].value; 
-		var carrier =  document.forms["frmDispatch"]["carrier"].value; 
+		var carrier =  document.forms["frmDispatch"]["carrier"].value;
+		var pickup_num =  document.forms["frmDispatch"]["pickup_num"].value; 
 		var pieces =  document.forms["frmDispatch"]["pieces"].value; 
 		var space =  document.forms["frmDispatch"]["space"].value; 
 		var act_wgt =  document.forms["frmDispatch"]["act_wgt"].value; 
@@ -37,6 +38,10 @@
 		
 		if(carrier == null || carrier == ""){
 			alert("carrier can't be empty");
+			return false;
+		}
+		if(pickup_num == null || pickup_num == ""){
+			alert("pickup_num can't be empty");
 			return false;
 		}
 		
@@ -132,8 +137,9 @@
 	}
 </script>
 <?php
-include("header.php");
 session_start();
+include("header.php");
+
 include("class.dispatch.dao.php");
 include("class.company.dao.php");
 include_once ("db.php");
@@ -145,7 +151,7 @@ include("class.trailer.dao.php");
  $trailerList = $daoTrailer->getVehicleId($_SESSION["uid"],1);
  $count 	= count($truckList);
  $daoCompany= new DAOcompany();
- $companyList = $daoCompany->getCompanyName($_SESSION["uid"]);
+ $companyList = $daoCompany->getCompany($_SESSION["uid"]);
 ?>
 <center>
 	<h3>Add Dispatch</h3>
@@ -160,14 +166,18 @@ include("class.trailer.dao.php");
 			<tr>
 				<td> Carrier </td>
 				<td><select name = "carrier" style="width:198px" value = "<?=$vo->carrier?>">
+					<option selected value="<?=$vo->carrier?>"><?=$vo->carrier?></option>
                     <?php
                     foreach( $companyList as $name){ 
-                        echo "<option value=\"$name\">$name</option>";}
+                        echo "<option value=\"$name->comp_id\">$name->title</option>";}
                     ?>
                    </select>
                </td>
 			</tr>
-			
+			<tr>
+				<td> Pick Up Number </td>
+				<td><input type = "text" name = "pickup_num" style="width:198px" value= "<?=$vo->pickup_num?> "/></td>
+			</tr>
 			<tr>
 				<td> Pieces </td>
 				<td><input type = "text" name = "pieces" style="width:198px" value= "<?=$vo->pieces?> "/></td>
@@ -219,8 +229,9 @@ include("class.trailer.dao.php");
 			<tr>
 				<td> Trailer Id </td>
 				<td><select name = "trailer_id" style="width:198px" value = "<?=$vo->trailer_id?>">
+					<option selected value="<?=$vo->trailer_id?>"><?=$vo->trailer_id?></option>
                     <?php
-                    foreach( $trailerList as $name){ 
+                    foreach( $trailerList as $name){
                         echo "<option value=\"$name\">$name</option>";}
                     ?>
                    </select>
@@ -229,8 +240,9 @@ include("class.trailer.dao.php");
 			<tr>
 				<td> Truck Id </td>
 				<td><select name = "truck_id" style="width:198px" value = "<?=$vo->truck_id?>">
+					<option selected value="<?=$vo->truck_id?>"><?=$vo->truck_id?></option>
                     <?php
-                    foreach( $truckList as $name){ 
+                    foreach( $truckList as $name){
                         echo "<option value=\"$name\">$name</option>";}
                     ?>
                    </select>
@@ -279,10 +291,14 @@ include("class.trailer.dao.php");
 				<td><select name = "carrier" style="width:198px">
                     <?php
                     foreach( $companyList as $name){ 
-                        echo "<option value=\"$name\">$name</option>";}
+                        echo "<option value=\"$name->comp_id\">$name->title</option>";}
                     ?>
                    </select>
                </td>
+			</tr>
+			<tr>
+				<td> Pick Up Number </td>
+				<td><input type = "text" name = "pickup_num" style="width:198px"/></td>
 			</tr>
 			<tr>
 				<td> Pieces </td>

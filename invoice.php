@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("db.php");
 include("class.dispatch.dao.php");
 include("class.company.dao.php");
@@ -8,9 +7,10 @@ $daoCompany = new DAOcompany();
 if(isset($_GET["id"])){
   $vo = $dao->get($_GET["id"]);
   }
-$vo_comp  = $daoCompany->getCompanyDetail($vo->carrier,$vo->uid);
+  
+$vo_comp  = $daoCompany->get($vo->carrier);
 
-$inv_date = date('d/m/Y');
+$inv_date = date('Y-m-d');
 
 $bal      = ($vo->total) - ($vo->advance);
 ?>
@@ -51,7 +51,7 @@ $bal      = ($vo->total) - ($vo->advance);
 
 <div class="col-sm-8">
 <p> 
-<?php echo $vo->carrier; ?><br><br>
+<?php echo $vo_comp->title; ?><br><br>
 <?php echo $vo_comp->address; ?><br>
 <?php echo $vo_comp->city; ?>, <?php echo $vo->state; ?> <?php echo $vo->pin_code; ?><br><br>
 </p>

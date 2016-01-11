@@ -6,14 +6,14 @@
 /* value object to represent dispatch */ 
 class dispatch { 
 
-	var $did, $uid, $carrier, $pieces, $space, $act_wgt, $as_wgt, $type, $attention ,$reference ,$trailer_id , $truck_id , $pay_code , $rate ,$total , $creation_date , $pallets ,$temp , $miles , $load_num , $load_terms , $advance , $bill_to , $from_address ,$to_address;
+	var $did, $uid, $carrier,$pickup_num, $pieces, $space, $act_wgt, $as_wgt, $type, $attention ,$reference ,$trailer_id , $truck_id , $pay_code , $rate ,$total , $creation_date , $pallets ,$temp , $miles , $load_num , $load_terms , $advance , $bill_to , $from_address ,$to_address;
 
 	/* constructor */ 
-	public function __construct($uid, $creation_date, $carrier, $pieces, $space, $act_wgt, $as_wgt, $type, $attention ,$reference ,$trailer_id , $truck_id , $pay_code ,$pay_type , $rate ,$total ,$pallets , $temp , $miles , $load_num , $load_terms , $advance , $bill_to , $from_address , $to_address) { 
+	public function __construct($uid, $creation_date, $carrier, $pieces, $space, $act_wgt, $as_wgt, $type, $attention ,$reference ,$trailer_id , $truck_id , $pay_code ,$pay_type , $rate ,$total ,$pallets , $temp , $miles , $load_num , $load_terms , $advance , $bill_to , $from_address , $to_address , $pickup_num) { 
 		$this->uid = $uid;
 		$this->creation_date = $creation_date;
 		$this->carrier = $carrier;
-		$this->phone = $phone;
+		$this->pickup_num = $pickup_num;
 		$this->pieces = $pieces;
 		$this->space = $space;
 		$this->act_wgt = $act_wgt;
@@ -45,7 +45,7 @@ class dispatch {
 			"uid"=>$this->uid,
 			"creation_date"=>$this->creation_date,
 			"carrier"=>$this->carrier,
-			"phone"=>$this->phone,
+			"pickup_num"=>$this->pickup_num,
 			"pieces"=>$this->pieces,
 			"space"=>$this->space,
 			"act_wgt"=>$this->act_wgt,
@@ -84,7 +84,7 @@ class dispatch {
 				echo "<tr><td>uid</td><td>$this->uid</td></tr>";
 				echo "<tr><td>creation_date</td><td>$this->creation_date</td></tr>";
 				echo "<tr><td>carrier</td><td>$this->carrier</td></tr>";
-				echo "<tr><td>phone</td><td>$this->phone</td></tr>";
+				echo "<tr><td>pickup_num</td><td>$this->pickup_num</td></tr>";
 				echo "<tr><td>pieces</td><td>$this->pieces</td></tr>";
 				echo "<tr><td>space</td><td>$this->space</td></tr>";
 				echo "<tr><td>act_wgt</td><td>$this->act_wgt</td></tr>";

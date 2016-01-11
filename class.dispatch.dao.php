@@ -13,7 +13,7 @@ class DAOdispatch {
 		$result=mysql_query("SELECT * FROM dispatch WHERE did=$did");
 		if($result){/*ensure query success*/
 			if($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new dispatch($row['uid'],$row['creation_date'],$row['carrier'],$row['pieces'],$row['space'],$row['act_wgt'],$row['as_wgt'],$row['type'],$row['attention'],$row['reference'],$row['trailer_id'],$row['truck_id'],$row['pay_code'],$row['pay_type'],$row['rate'],$row['total'],$row['pallets'],$row['temp'],$row['miles'],$row['load_num'],$row['load_terms'],$row['advance'],$row['bill_to'],$row['from_address'],$row['to_address']);
+				$vo = new dispatch($row['uid'],$row['creation_date'],$row['carrier'],$row['pieces'],$row['space'],$row['act_wgt'],$row['as_wgt'],$row['type'],$row['attention'],$row['reference'],$row['trailer_id'],$row['truck_id'],$row['pay_code'],$row['pay_type'],$row['rate'],$row['total'],$row['pallets'],$row['temp'],$row['miles'],$row['load_num'],$row['load_terms'],$row['advance'],$row['bill_to'],$row['from_address'],$row['to_address'],$row['pickup_num']);
 				$vo->did = $did;
 				return $vo;
 			}
@@ -28,7 +28,7 @@ class DAOdispatch {
 		if($result){/*ensure query success*/
 			$vlist = array();
 			while($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo =  new dispatch($row['uid'],$row['creation_date'],$row['carrier'],$row['pieces'],$row['space'],$row['act_wgt'],$row['as_wgt'],$row['type'],$row['attention'],$row['reference'],$row['trailer_id'],$row['truck_id'],$row['pay_code'],$row['pay_type'],$row['rate'],$row['total'],$row['pallets'],$row['temp'],$row['miles'],$row['load_num'],$row['load_terms'],$row['advance'],$row['bill_to'],$row['from_address'],$row['to_address']);
+				$vo =  new dispatch($row['uid'],$row['creation_date'],$row['carrier'],$row['pieces'],$row['space'],$row['act_wgt'],$row['as_wgt'],$row['type'],$row['attention'],$row['reference'],$row['trailer_id'],$row['truck_id'],$row['pay_code'],$row['pay_type'],$row['rate'],$row['total'],$row['pallets'],$row['temp'],$row['miles'],$row['load_num'],$row['load_terms'],$row['advance'],$row['bill_to'],$row['from_address'],$row['to_address'],$row['pickup_num']);
 				$vo->did = $row['did'];
 				$vlist[] = $vo;
 			}
@@ -44,7 +44,7 @@ class DAOdispatch {
 		if($result){/*ensure query success*/
 			$vlist = array();
 			while($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new dispatch($row['uid'],$row['creation_date'],$row['carrier'],$row['pieces'],$row['space'],$row['act_wgt'],$row['as_wgt'],$row['type'],$row['attention'],$row['reference'],$row['trailer_id'],$row['truck_id'],$row['pay_code'],$row['pay_type'],$row['rate'],$row['total'],$row['pallets'],$row['temp'],$row['miles'],$row['load_num'],$row['load_terms'],$row['advance'],$row['bill_to'],$row['from_address'],$row['to_address']);
+				$vo = new dispatch($row['uid'],$row['creation_date'],$row['carrier'],$row['pieces'],$row['space'],$row['act_wgt'],$row['as_wgt'],$row['type'],$row['attention'],$row['reference'],$row['trailer_id'],$row['truck_id'],$row['pay_code'],$row['pay_type'],$row['rate'],$row['total'],$row['pallets'],$row['temp'],$row['miles'],$row['load_num'],$row['load_terms'],$row['advance'],$row['bill_to'],$row['from_address'],$row['to_address'],$row['pickup_num']);
 				$vo->did = $row['did'];
 				$vlist[] = $vo;
 			}
@@ -62,8 +62,8 @@ class DAOdispatch {
 
 	/* insert new record in db */
 	public function insert(&$vo){
-		$q = "INSERT INTO dispatch(did,uid,creation_date,carrier,pieces,space,act_wgt,as_wgt,type,attention,reference,trailer_id,truck_id,pay_code,pay_type,rate,total,pallets,temp,miles,load_num,load_terms,advance,bill_to,from_address,to_address) VALUES(' ','$vo->uid','$vo->creation_date' , '$vo->carrier','$vo->pieces','$vo->space','$vo->act_wgt','$vo->as_wgt','$vo->type','$vo->attention','$vo->reference','$vo->trailer_id','$vo->truck_id','$vo->pay_code','$vo->pay_type','$vo->rate','$vo->total','$vo->pallets','$vo->temp','$vo->miles','$vo->load_num','$vo->load_terms','$vo->advance','$vo->bill_to','$vo->from_address','$vo->to_address')";
-		echo $creation_date;
+		$q = "INSERT INTO dispatch(did,uid,creation_date,carrier,pickup_num,pieces,space,act_wgt,as_wgt,type,attention,reference,trailer_id,truck_id,pay_code,pay_type,rate,total,pallets,temp,miles,load_num,load_terms,advance,bill_to,from_address,to_address) VALUES(' ','$vo->uid','$vo->creation_date' , '$vo->carrier','$vo->pickup_num','$vo->pieces','$vo->space','$vo->act_wgt','$vo->as_wgt','$vo->type','$vo->attention','$vo->reference','$vo->trailer_id','$vo->truck_id','$vo->pay_code','$vo->pay_type','$vo->rate','$vo->total','$vo->pallets','$vo->temp','$vo->miles','$vo->load_num','$vo->load_terms','$vo->advance','$vo->bill_to','$vo->from_address','$vo->to_address')";
+		//echo $q;
 		 if(mysql_query($q)){
 			$result = mysql_query("Select MAX(did) from dispatch");
 			if($row = mysql_fetch_array($result)){
@@ -76,7 +76,9 @@ class DAOdispatch {
 
 	/* update an existing record in db */
 	public function update(&$vo){
-		return mysql_query("UPDATE dispatch SET uid = '$vo->uid', creation_date = '$vo->creation_date' , carrier = '$vo->carrier',pieces = '$vo->pieces',space = '$vo->space',act_wgt = '$vo->act_wgt',as_wgt = '$vo->as_wgt',type = '$vo->type',attention = '$vo->attention',reference = '$vo->reference',trailer_id = '$vo->trailer_id',truck_id = '$vo->truck_id',pay_code = '$vo->pay_code',pay_type = '$vo->pay_type',rate = '$vo->rate',total = '$vo->total',pallets = '$vo->pallets',temp = '$vo->temp',miles = '$vo->miles',load_num = '$vo->load_num',load_terms = '$vo->load_terms',advance = '$vo->advance',bill_to = '$vo->bill_to',from_address = '$vo->from_address',to_address = '$vo->to_address' WHERE did = $vo->did ");
+		$q = "UPDATE dispatch SET uid = '$vo->uid', creation_date = '$vo->creation_date' ,carrier = '$vo->carrier',pickup_num = '$vo->pickup_num' , pieces = '$vo->pieces',space = '$vo->space',act_wgt = '$vo->act_wgt',as_wgt = '$vo->as_wgt',type = '$vo->type',attention = '$vo->attention',reference = '$vo->reference',trailer_id = '$vo->trailer_id',truck_id = '$vo->truck_id',pay_code = '$vo->pay_code',pay_type = '$vo->pay_type',rate = '$vo->rate',total = '$vo->total',pallets = '$vo->pallets',temp = '$vo->temp',miles = '$vo->miles',load_num = '$vo->load_num',load_terms = '$vo->load_terms',advance = '$vo->advance',bill_to = '$vo->bill_to',from_address = '$vo->from_address',to_address = '$vo->to_address' WHERE did = '$vo->did' ";
+		//echo $q;
+		return mysql_query("UPDATE dispatch SET uid = '$vo->uid', creation_date = '$vo->creation_date' ,carrier = '$vo->carrier',pickup_num = '$vo->pickup_num' , pieces = '$vo->pieces',space = '$vo->space',act_wgt = '$vo->act_wgt',as_wgt = '$vo->as_wgt',type = '$vo->type',attention = '$vo->attention',reference = '$vo->reference',trailer_id = '$vo->trailer_id',truck_id = '$vo->truck_id',pay_code = '$vo->pay_code',pay_type = '$vo->pay_type',rate = '$vo->rate',total = '$vo->total',pallets = '$vo->pallets',temp = '$vo->temp',miles = '$vo->miles',load_num = '$vo->load_num',load_terms = '$vo->load_terms',advance = '$vo->advance',bill_to = '$vo->bill_to',from_address = '$vo->from_address',to_address = '$vo->to_address' WHERE did = '$vo->did' ");
 	}
 
 	/* save the value object in db */

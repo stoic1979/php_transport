@@ -1,8 +1,11 @@
 <?php
 session_start();
 include("class.dispatch.dao.php");
+include("class.company.dao.php");
 include_once("header.php");
 $dao = new DAOdispatch();
+$daoCompany = new DAOcompany();
+
 ?>
 <center><b><u><font face ="Britannic Bold"><h1>Dispatch</h1></font></u></b></center><br><br><br>
 <a href="form.dispatch.php" class="btn btn-info">Add dispatch</a><br><br>
@@ -11,6 +14,7 @@ $dao = new DAOdispatch();
 		<td>#</td>
 		<td>Creation Date</td>
 		<td>Carrier</td>
+		<td>Pick Up Number</td>
 		<td>Pieces</td>
 		<td>Space</td>
 		<td>Actual Weight</td>
@@ -57,12 +61,14 @@ else	$next=$page+1;
 $i = 0;
 if($rec) foreach($rec as $row) {
 	$i++;
+	
 ?>
 	<tbody>
 	<tr>
 		<td><? echo $i ?>	</td>
 		<td><? echo $row->creation_date ?>	</td>
 		<td><? echo $row->carrier ?>	</td>
+		<td><? echo $row->pickup_num ?>	</td>
 		<td><? echo $row->pieces ?>	</td>
 		<td><? echo $row->space ?>	</td>
 		<td><? echo $row->act_wgt ?>	</td>
@@ -87,7 +93,7 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->to_address ?>	</td>
 		<th><a href='form.dispatch.php?id=<? echo $row->did ?>'><img src="img/edit.png" width = 20 height = 20 /></a></th>
 		<th><a href='delete.dispatch.php?id=<? echo $row->did ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
-		<th><a href='invoice.php?id=<? echo $row->did ?>' target="_blank">INVOICE</a></th>
+		<th><a href='invoice.php?id=<? echo $row->did ?>&cid=<? echo $cid ?> ' target="_blank">INVOICE</a></th>
 	</tr>
 	</tbody>
 <?}

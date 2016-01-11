@@ -102,6 +102,7 @@ class DAOcompany {
 		return NULL;
 	}
 
+
 	public function getCompanyName($uid){
 		
 		$result = mysql_query("Select title from company where uid=$uid");
@@ -117,16 +118,33 @@ class DAOcompany {
 		}
 	}
 
+	public function getCompany($uid){
+		
+		$result = mysql_query("Select * from company where uid=$uid");
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['fax'],$row['email'],$row['city'],$row['state'],$row['pin_code'],$row['country'],$row['address']);
+				$vo->comp_id = $row['comp_id'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
+
 	public function getCompanyDetail($cname,$uid){
 
 		$result = mysql_query("Select * from company where (title=$cname) and (uid=$uid)");
+		echo $result;
 		if($result){/*ensure query success */
 			echo 1;
 			if($row = mysql_fetch_array($result)){
-				echo 2;
 				echo join(', ', $row);
 				$vo = new company($row['uid'],$row['title'],$row['phone'],$row['fax'],$row['email'],$row['city'],$row['state'],$row['pin_code'],$row['country'],$row['address']);
 				$vo->comp_id = $row['comp_id'];
+				$vo->show();
 				return $vo;
 			}
 		}
