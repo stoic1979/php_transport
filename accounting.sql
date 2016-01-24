@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 11, 2016 at 07:18 PM
+-- Generation Time: Jan 24, 2016 at 04:49 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -163,15 +163,62 @@ CREATE TABLE IF NOT EXISTS `driver` (
   `email` text NOT NULL,
   `phone` text NOT NULL,
   `social_security_no` text NOT NULL,
+  `license_num` bigint(20) NOT NULL,
+  `expiry_date` date NOT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`did`, `uid`, `name`, `photo`, `address`, `email`, `phone`, `social_security_no`) VALUES
-(1, 3, 'New Driver ', 'aa ', '12 xyz ', 'xyz@gmail.com ', '77788 ', '12');
+INSERT INTO `driver` (`did`, `uid`, `name`, `photo`, `address`, `email`, `phone`, `social_security_no`, `license_num`, `expiry_date`) VALUES
+(1, 3, 'New Driver ', 'aa ', '12 xyz ', 'xyz@gmail.com ', '77788 ', '12', 0, '0000-00-00'),
+(2, 9, 'Jhonny', '', '13 New Street', 'jhonny@gmail.com', '7788002', '994', 52990, '2016-03-31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expense`
+--
+
+CREATE TABLE IF NOT EXISTS `expense` (
+  `expense_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` bigint(20) NOT NULL,
+  `expense_type` text NOT NULL,
+  `expense_date` date NOT NULL,
+  `category` text NOT NULL,
+  `truck_id` bigint(20) NOT NULL,
+  `description` text NOT NULL,
+  `amount` double NOT NULL,
+  PRIMARY KEY (`expense_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `expense`
+--
+
+INSERT INTO `expense` (`expense_id`, `uid`, `expense_type`, `expense_date`, `category`, `truck_id`, `description`, `amount`) VALUES
+(2, 9, 'Expense', '2016-01-22', 'Fuel expense ', 66, 'fuel consumed in journey ', 450),
+(3, 9, 'Expense ', '2016-01-25', 'Lunch expense', 8, 'Had lunch in the journey', 25),
+(4, 9, 'Maintenance ', '2016-01-27', 'Truck Service', 8, 'Monthly Service', 300);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice`
+--
+
+CREATE TABLE IF NOT EXISTS `invoice` (
+  `inv_num` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` bigint(20) NOT NULL,
+  `customer` text NOT NULL,
+  `total_amt` double NOT NULL,
+  `balance_due` double NOT NULL,
+  `inv_date` date NOT NULL,
+  `paid_date` int(11) NOT NULL,
+  PRIMARY KEY (`inv_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
