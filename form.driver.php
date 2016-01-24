@@ -7,7 +7,9 @@
 		var address =  document.forms["frmDriver"]["address"].value; 
 		var email =  document.forms["frmDriver"]["email"].value; 
 		var phone =  document.forms["frmDriver"]["phone"].value; 
-		var social_security_no =  document.forms["frmDriver"]["social_security_no"].value; 
+		var social_security_no =  document.forms["frmDriver"]["social_security_no"].value;
+		var license_num =  document.forms["frmDriver"]["license_num"].value; 
+		var expiry_date =  document.forms["frmDriver"]["expiry_date"].value;  
 
 		if(uid == null || uid == ""){
 			alert("uid can't be empty");
@@ -35,6 +37,14 @@
 		}
 		if(social_security_no == null || social_security_no == ""){
 			alert("social_security_no can't be empty");
+			return false;
+		}
+		if(license_num == null || license_num == ""){
+			alert("license_num can't be empty");
+			return false;
+		}
+		if(expiry_date == null || expiry_date == ""){
+			alert("expiry_date can't be empty");
 			return false;
 		}
 
@@ -78,6 +88,14 @@ include("class.driver.dao.php");
 				<td> Social Security No </td>
 				<td><input type = "text" name = "social_security_no" value= "<?=$vo->social_security_no?> "/></td>
 			</tr>
+			<tr>
+				<td> License Number </td>
+				<td><input type = "text" name = "license_num" value= "<?=$vo->license_num?> "/></td>
+			</tr>
+			<tr>
+				<td> License Expiry Date </td>
+				<td><input type = "text" name = "expiry_date" value= "<?=$vo->expiry_date?> "/></td>
+			</tr>
 			<tr colspan = "2">
 				<th><input type = "submit" value= "EDIT"  /></th>
 			</tr>
@@ -106,6 +124,14 @@ include("class.driver.dao.php");
 			<tr>
 				<td> Social Security No </td>
 				<td><input type = "text" name = "social_security_no" /></td>
+			</tr>
+			<tr>
+				<td> License Number </td>
+				<td><input type = "text" name = "license_num" /></td>
+			</tr>
+			<tr>
+				<td> License Expiry Date </td>
+				<td><input type = "text" name = "expiry_date" /></td>
 			</tr>
 			<tr colspan = "2">
 				<th><input type = "submit" class="btn btn-info" value= "ADD"  /></th>

@@ -26,7 +26,7 @@ if(isset($_SESSION['uid'])!=""){
  	
  } else { // login OK
  	$_SESSION["uid"] = $user->uid;
-    header("Location: customer.php");
+    header("Location: dashboard.php");
  }
 
 ?>

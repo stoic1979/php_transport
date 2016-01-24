@@ -13,7 +13,7 @@ class DAOdriver {
 		$result=mysql_query("SELECT * FROM driver WHERE did=$did");
 		if($result){/*ensure query success*/
 			if($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no']);
+				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no'],$row['license_num'],$row['expiry_date']);
 				$vo->did = $did;
 				return $vo;
 			}
@@ -28,7 +28,7 @@ class DAOdriver {
 		if($result){/*ensure query success*/
 			$vlist = array();
 			while($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no']);
+				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no'],$row['license_num'],$row['expiry_date']);
 				$vo->did = $row['did'];
 				$vlist[] = $vo;
 			}
@@ -44,7 +44,7 @@ class DAOdriver {
 		if($result){/*ensure query success*/
 			$vlist = array();
 			while($row = mysql_fetch_array($result)){/*ensure record*/
-				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no']);
+				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no'],$row['license_num'],$row['expiry_date']);
 				$vo->did = $row['did'];
 				$vlist[] = $vo;
 			}
@@ -61,7 +61,7 @@ class DAOdriver {
 
 	/* insert new record in db */
 	public function insert(&$vo){
-		 if(mysql_query("INSERT INTO driver(did,uid,name,photo,address,email,phone,social_security_no) VALUES(' ', '$vo->uid','$vo->name','$vo->photo','$vo->address','$vo->email','$vo->phone','$vo->social_security_no')")){
+		 if(mysql_query("INSERT INTO driver(did,uid,name,photo,address,email,phone,social_security_no,license_num,expiry_date) VALUES(' ', '$vo->uid','$vo->name','$vo->photo','$vo->address','$vo->email','$vo->phone','$vo->social_security_no','$vo->license_num','$vo->expiry_date')")){
 			$result = mysql_query("Select MAX(did) from driver");
 			if($row = mysql_fetch_array($result)){
 				$vo->did=$row[0];
@@ -73,7 +73,7 @@ class DAOdriver {
 
 	/* update an existing record in db */
 	public function update(&$vo){
-		return mysql_query("UPDATE driver SET uid = '$vo->uid',name = '$vo->name',photo = '$vo->photo',address = '$vo->address',email = '$vo->email',phone = '$vo->phone',social_security_no = '$vo->social_security_no' WHERE did = $vo->did ");
+		return mysql_query("UPDATE driver SET uid = '$vo->uid',name = '$vo->name',photo = '$vo->photo',address = '$vo->address',email = '$vo->email',phone = '$vo->phone',social_security_no = '$vo->social_security_no',license_num = '$vo->license_num',expiry_date = '$vo->expiry_date' WHERE did = $vo->did ");
 	}
 
 	/* save the value object in db */

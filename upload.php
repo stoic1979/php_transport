@@ -4,8 +4,8 @@ include("class.upload.dao.php");
 include_once("header.php");
 $dao = new DAOupload();
 ?>
-<center><b><u><font face ="Britannic Bold"><h1>Upload</h1></font></u></b></center><br><br><br>
-<a href="form.upload.php" class="btn btn-info">Add upload</a><br><br>
+<center><b><u><font face ="Britannic Bold"><h1>Upload</h1></font></u></b></center><br>
+<a href="form.upload.php" class="btn btn-info">Add upload</a><br>
 <table class="table table-striped">
 	<tr class ="info">
 		<td>#</td>

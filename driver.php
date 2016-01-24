@@ -4,8 +4,8 @@ include("class.driver.dao.php");
 include_once("header.php");
 $dao = new DAOdriver();
 ?>
-<center><b><u><font face ="Britannic Bold"><h1>Driver</h1></font></u></b></center><br><br><br>
-<a href="form.driver.php" class="btn btn-info">Add driver</a><br><br>
+<center><b><u><font face ="Britannic Bold"><h1>Driver</h1></font></u></b></center><br>
+<a href="form.driver.php" class="btn btn-info">Add driver</a><br>
 <table class="table table-striped">
 	<tr class ="info">
 		<td>#</td>
@@ -15,6 +15,8 @@ $dao = new DAOdriver();
 		<td>Email</td>
 		<td>Phone</td>
 		<td>Social Security No</td>
+		<td>License Number</td>
+		<td>License Expiry Date</td>
 		<td><b>Edit</b></td>
 		<td><b>Delete</b></td>
 	</tr>
@@ -48,6 +50,8 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->email ?>	</td>
 		<td><? echo $row->phone ?>	</td>
 		<td><? echo $row->social_security_no ?>	</td>
+		<td><? echo $row->license_num ?>	</td>
+		<td><? echo $row->expiry_date ?>	</td>
 		<th><a href='form.driver.php?id=<? echo $row->did ?>'><img src="img/edit.png" width = 20 height = 20 /></a></th>
 		<th><a href='delete.driver.php?id=<? echo $row->did ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
 	</tr>

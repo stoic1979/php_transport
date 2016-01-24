@@ -25,26 +25,42 @@ $user  = $dao->get($uid);
 <body>
 	<nav class="navbar navbar-inverse">
 	<div style = "margin:auto;">
-		<a href="company.php" class="navbar-brand">Company&nbsp;&nbsp;&nbsp;</a>
-		<a href="customer.php" class="navbar-brand">Customer&nbsp;&nbsp;&nbsp;</a>
-		<a href="driver.php" class="navbar-brand">Driver&nbsp;&nbsp;&nbsp;</a>
+    <a href="dashboard.php" class="navbar-brand">Dashboard&nbsp;</a>
+		<a href="company.php" class="navbar-brand">Company&nbsp;</a>
+		<a href="customer.php" class="navbar-brand">Customer&nbsp;</a>
+		<a href="driver.php" class="navbar-brand">Driver&nbsp;</a>
+    <ul class="nav navbar-nav">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><font size = 4>Accounting</font>&nbsp;
+      <span class="caret"></span>&nbsp;&nbsp;&nbsp;</a>
+          <ul class="dropdown-menu">
+            <li> <a href="invoice.php" class="navbar-brand">Invoice&nbsp;</a></li>
+            <li><a href="expense.php?type=Expense" class="navbar-brand">Expense&nbsp;</a></li>
+            <li><a href="maintenance.php?type=Maintenance" class="navbar-brand">Maintenance&nbsp;</a>
+            </li>
+            <li><a href="dispatch.php" class="navbar-brand">Dispatch&nbsp;</a></li>
+            </ul>
+        </li>
+  </ul>
+   
+    
     
 <ul class="nav navbar-nav">
   <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><font size = 4>Equipment</font>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><font size = 4>Equipment</font>&nbsp;&nbsp;
       <span class="caret"></span>&nbsp;&nbsp;&nbsp;</a>
           <ul class="dropdown-menu">
-            <li><a href="truck.php" class="navbar-brand">Truck&nbsp;&nbsp;&nbsp;</a></li>
-    <li><a href="trailer.php" class="navbar-brand">Trailer&nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="truck.php" class="navbar-brand">Truck&nbsp;&nbsp;</a></li>
+    <li><a href="trailer.php" class="navbar-brand">Trailer&nbsp;&nbsp;</a></li>
 
             </ul>
         </li>
   </ul>
 
-		<a href="dispatch.php" class="navbar-brand">Dispatch&nbsp;&nbsp;&nbsp;</a>
-    <a href="transaction.php" class="navbar-brand">Transaction&nbsp;&nbsp;&nbsp;</a>
-		<a href="upload.php" class="navbar-brand">Upload&nbsp;&nbsp;&nbsp;</a>
-		<a href="logout.php?logout" class="navbar-brand">Sign Out&nbsp;&nbsp;&nbsp;</a>
+		
+    <a href="transaction.php" class="navbar-brand">Transaction&nbsp;</a>
+		<a href="upload.php" class="navbar-brand">Upload&nbsp;</a>
+		<!-- <a href="logout.php?logout" class="navbar-brand">Sign Out&nbsp;&nbsp;</a> -->
 		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">oo</button>
 		
 

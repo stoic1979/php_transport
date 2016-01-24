@@ -1,13 +1,13 @@
 <?php
 include("db.php");
-include("class.upload.dao.php");
+include("class.expense.dao.php");
 
 
-$dao = new DAOupload();
+$dao = new DAOexpense();
 if(isset($_GET["id"])){
 	$vo = $dao->get($_GET["id"]);
 	$dao->del($vo);
 }
 
-header("Location: upload.php");
+header("Location: expense.php");
 ?>

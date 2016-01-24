@@ -7,8 +7,8 @@ $dao = new DAOdispatch();
 $daoCompany = new DAOcompany();
 
 ?>
-<center><b><u><font face ="Britannic Bold"><h1>Dispatch</h1></font></u></b></center><br><br><br>
-<a href="form.dispatch.php" class="btn btn-info">Add dispatch</a><br><br>
+<center><b><u><font face ="Britannic Bold"><h1>Dispatch</h1></font></u></b></center><br>
+<a href="form.dispatch.php" class="btn btn-info">Add dispatch</a><br>
 <table class="table table-striped">
 	<tr class ="info">
 		<td>#</td>
@@ -93,7 +93,7 @@ if($rec) foreach($rec as $row) {
 		<td><? echo $row->to_address ?>	</td>
 		<th><a href='form.dispatch.php?id=<? echo $row->did ?>'><img src="img/edit.png" width = 20 height = 20 /></a></th>
 		<th><a href='delete.dispatch.php?id=<? echo $row->did ?>'><img src="img/del.png" width = 20 height = 20/></a></th>
-		<th><a href='invoice.php?id=<? echo $row->did ?>&cid=<? echo $cid ?> ' target="_blank">INVOICE</a></th>
+		<th><a href='invoice1.php?id=<? echo $row->did ?>&cid=<? echo $cid ?> ' target="_blank">INVOICE</a></th>
 	</tr>
 	</tbody>
 <?}

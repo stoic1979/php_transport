@@ -4,8 +4,8 @@ include("class.transaction.dao.php");
 include_once("header.php");
 $dao = new DAOtransaction();
 ?>
-<center><b><u><font face ="Britannic Bold"><h1>Transaction</h1></font></u></b></center><br><br><br>
-<a href="form.transaction.php" class="btn btn-info">Add transaction</a><br><br>
+<center><b><u><font face ="Britannic Bold"><h1>Transaction</h1></font></u></b></center><br>
+<a href="form.transaction.php" class="btn btn-info">Add transaction</a><br>
 <table class="table table-striped">
 	<tr class ="info">
 		<td>#</td>
