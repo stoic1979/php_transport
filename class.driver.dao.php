@@ -100,6 +100,23 @@ class DAOdriver {
 		return NULL;
 	}
 
+	/* get driver name and expiry date */
+	public function getDrivers($uid){
+		$result=mysql_query("SELECT * FROM driver where uid=$uid");
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new driver($row['uid'],$row['name'],$row['photo'],$row['address'],$row['email'],$row['phone'],$row['social_security_no'],$row['license_num'],$row['expiry_date']);
+				$vo->did = $row['did'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+
+	}
+
  }
 /* DAOdriver */
 ?>

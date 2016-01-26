@@ -101,6 +101,22 @@ class DAOcustomer {
 		return NULL;
 	}
 
+	public function getCustomers($uid){
+		$result=mysql_query("SELECT * FROM customer where uid=$uid" );
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new customer($row['uid'],$row['name'],$row['firm_name'],$row['address'],$row['phone'],$row['email']);
+				$vo->cust_id = $row['cust_id'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
+
+
  }
 /* DAOcustomer */
 ?>

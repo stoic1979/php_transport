@@ -37,8 +37,12 @@
 	}
 </script>
 <?php
+session_start();
 include("header.php");
 include("class.invoice.dao.php");
+include("class.customer.dao.php");
+$daoCustomer = new DAOcustomer();
+$customer_detail = $daoCustomer->getCustomers($_SESSION['uid']);
 ?>
 <center>
 	<h3>Add Invoice</h3>
@@ -51,7 +55,13 @@ include("class.invoice.dao.php");
 		?>
 			<tr>
 				<td> Customer Name </td>
-				<td><input type = "text" name = "customer" value= "<?=$vo->customer?> "/></td>
+				<td><select name = "customer" style="width:198px" value = "<?=$vo->customer?>">
+					<option selected value="<?=$vo->customer?>"><?=$vo->customer?></option>
+                    <?php
+                    foreach( $customer_detail as $name){ 
+                        echo "<option value=\"$name->name\">$name->name</option>";}
+                    ?>
+                   </select></td>
 			</tr>
 			<tr>
 				<td> Total Amount </td>
@@ -76,7 +86,13 @@ include("class.invoice.dao.php");
 		<?}else{?>
 			<tr>
 				<td> Customer Name </td>
-				<td><input type = "text" name = "customer" /></td>
+				<td><select name = "customer" style="width:198px">
+					
+                    <?php
+                    foreach( $customer_detail as $name){ 
+                        echo "<option value=\"$name->name\">$name->name</option>";}
+                    ?>
+                   </select></td>
 			</tr>
 			<tr>
 				<td> Total Amount </td>

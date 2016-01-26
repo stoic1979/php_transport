@@ -5,7 +5,7 @@ include_once("header.php");
 $dao = new DAOcompany();
 ?>
 <center><b><u><font face ="Britannic Bold"><h1>Company</h1></font></u></b></center><br>
-<a href="form.company.php" class="btn btn-success" role="button">Add Company</a> <br>
+<a href="form.company.php" class="btn btn-info" role="button">Add Company</a> <br>
 <table class="table table-striped">
     <thead>
 	<tr class ="info">

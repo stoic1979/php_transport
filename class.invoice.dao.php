@@ -101,6 +101,21 @@ class DAOinvoice {
 		return NULL;
 	}
 
+	public function getInvoices($uid){
+		$result=mysql_query("SELECT * FROM invoice where uid=$uid" );
+		if($result){/*ensure query success*/
+			$vlist = array();
+			while($row = mysql_fetch_array($result)){/*ensure record*/
+				$vo = new invoice($row['uid'],$row['customer'],$row['total_amt'],$row['balance_due'],$row['inv_date'],$row['paid_date']);
+				$vo->inv_num = $row['inv_num'];
+				$vlist[] = $vo;
+			}
+			return $vlist;
+		}
+
+		return NULL;
+	}
+
  }
 /* DAOinvoice */
 ?>
