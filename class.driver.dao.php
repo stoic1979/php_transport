@@ -22,6 +22,7 @@ class DAOdriver {
 		return NULL;
 	}
 
+
 	/* returns all vo */
 	public function getAll($limit1,$limit2){
 		$result=mysql_query("SELECT * FROM driver LIMIT " . $limit1 . "," . $limit2 );

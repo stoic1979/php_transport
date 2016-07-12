@@ -41,6 +41,7 @@ Register User: <br><hr>
     </table>
 </form>
 
+
 Add Message: <br><hr>
 <form method="POST" action="api.php">
     <table cellspacing="5" cellpadding="5">
@@ -63,6 +64,7 @@ Add Message: <br><hr>
     </table>
 </form>
 
+
 Get Messages Received: <br><hr>
 <form method="POST" action="api.php">
     <table cellspacing="5" cellpadding="5">
@@ -80,6 +82,7 @@ Get Messages Received: <br><hr>
         </tr>
     </table>
 </form>
+
 
 Add Company: <br><hr>
 <form method="POST" action="api.php">
@@ -118,3 +121,97 @@ Add Company: <br><hr>
         </tr>
     </table>
 </form>
+
+
+<br><br>
+Get Drivers: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="get_drivers"/></td>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Get Drivers"  /></th>
+        </tr>
+    </table>
+</form>
+
+
+<br><br>
+Driver Login: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="driver_login"/></td>
+        <tr>
+            <td> Driver Username:</td>
+            <td><input type = "text" name = "username" /></td>
+        </tr>
+        <tr>
+            <td> Driver Password:</td>
+            <td><input type = "text" name = "password" /></td>
+        </tr>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Driver Login"  /></th>
+        </tr>
+    </table>
+</form>
+
+
+<br><br>
+Add Driver Location: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="add_driver_location"/></td>
+        <tr>
+            <td> Driver Id:</td>
+            <td><input type = "text" name = "did" /></td>
+        </tr>
+        <tr>
+            <td> Latitude:</td>
+            <td><input type = "text" name = "lat" /></td>
+        </tr>
+         <tr>
+            <td> Longitude:</td>
+            <td><input type = "text" name = "lng" /></td>
+        </tr>
+        <tr colspan = "2">
+            <th><input type="submit" value= "Add Driver Location"  /></th>
+        </tr>
+    </table>
+</form>
+
+
+<br><br>
+Get Driver Locations: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="get_driver_locations"/></td>
+        <tr>
+            <td> Driver Id:</td>
+            <td><input type = "text" name = "did" /></td>
+        </tr>
+        <tr>
+            <td> Lid:</td>
+            <td><input type = "text" name = "lid" /></td>
+        </tr>
+         
+        <tr colspan = "2">
+            <th><input type="submit" value= "Get Driver Locations"  /></th>
+        </tr>
+    </table>
+</form>
+
+
+<br><br>
+Get Max Driver Location Id: <br><hr>
+<form method="POST" action="api.php">
+    <table cellspacing="5" cellpadding="5">
+            <input type="hidden" name="op" value="get_max_driver_location"/></td>
+        <tr>
+            <td> Driver Id:</td>
+            <td><input type = "text" name = "did" /></td>
+        </tr>
+	<tr colspan = "2">
+            <th><input type="submit" value= "Get Driver Max Location"  /></th>
+        </tr>
+    </table>
+</form>
+

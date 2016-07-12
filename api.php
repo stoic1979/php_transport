@@ -2,6 +2,7 @@
 include("db.php"); 
 
 include("admin/class.user.dao.php");
+include("admin/class.driver.dao.php");
 include("class.session.dao.php");
 
 // functions..................................................................
@@ -108,6 +109,85 @@ function handleRegister() {
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////
+//
+//     DRIVER APIS
+//
+////////////////////////////////////////////////////////////////////////////////////
+
+function handleGetDrivers() {
+    $query = "select * from driver";
+    $result = mysql_query($query);
+    $ret = array();
+    while( $row = mysql_fetch_assoc($result) ) {
+        $ret[] = $row;
+    }
+
+    echo json_encode($ret);
+}
+
+function handleDriverLogin() {
+
+    $username  = $_POST["username"];
+    $password  = $_POST["password"];
+
+    $ret = array('msg'=> 'Login Successful', 'error'=> '0');
+
+    $result=mysql_query("SELECT * FROM driver WHERE username='$username' and password='$password'");
+        
+    if( mysql_num_rows($result) > 0 ) {
+        $row = mysql_fetch_array($result);
+        $ret["did"] = $row['did'];
+    } else {
+        $ret["error"] = 1;
+        $ret["msg"] = "Invalid username or password";
+    }
+
+    echo json_encode($ret);
+}
+
+function addDriverLocation() {
+
+    $did  = $_POST["did"];
+    $lat  = $_POST["lat"];
+    $lng  = $_POST["lng"];
+
+    $ret = array('error'=> '0');
+
+    $result = mysql_query("INSERT INTO driver_location(`did`,`lat`,`lng`) VALUES('$did', '$lat', '$lng')");
+
+    if(! ($result > 0) ) {
+        $ret["error"] = 1;
+    }  
+
+    echo json_encode($ret);
+}
+
+function getDriverLocations() {
+
+    $did  = $_POST["did"];
+    $lid  = $_POST["lid"];
+    $query = "select * from driver_location where did=$did and lid > $lid limit 40";
+    $result = mysql_query($query);
+	
+    $ret = array();
+    while( $row = mysql_fetch_assoc($result) ) {
+        $ret[] = $row;
+    }
+
+    echo json_encode($ret);
+}
+
+function handleGetMaxDriverLocation() {
+    $did  = $_POST["did"];
+    $ret = array("max_id" => 0);
+    $result = mysql_query("SELECT MAX(lid) FROM driver_location where did=$did");
+    $row = mysql_fetch_row($result);
+    $ret["max_id"] = $row[0];
+    echo json_encode($ret);
+}
+
+
 
 ////////////////////////// MAIN ///////////////////////////////////////
 if(!isset($_POST["op"]))  die("operation not specified");
@@ -118,7 +198,13 @@ $op = $_POST["op"];
 // API handlers........................................................
 if($op == "login")      handleLogin();
 if($op == "register")   handleRegister();
-if($op == "addcompany")   addCompany();
+if($op == "addcompany") addCompany();
 
+// driver apis
+if($op == "get_drivers")              handleGetDrivers();
+if($op == "driver_login")             handleDriverLogin();
+if($op == "add_driver_location")      addDriverLocation();
+if($op == "get_driver_locations")     getDriverLocations();
+if($op == "get_max_driver_location")  handleGetMaxDriverLocation();
 
 ?>

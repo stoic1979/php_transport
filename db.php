@@ -13,9 +13,9 @@
 **********************************************************************************/
 
 	define('HOST','localhost');
-	define('USER','root');
-	define('PASSWORD', '123');
-	define('DBNAME','accounting');
+	define('USER','weavebyt_navi');
+	define('PASSWORD', 'st01c');
+	define('DBNAME','weavebyt_trucks');
 
 	//conencting to database
 	$con=mysql_connect(HOST, USER, PASSWORD);
